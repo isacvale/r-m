@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title></title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="horizontal-container"
+        ><div id="sq-logo">
+            <img src='img/logo.svg' alt="K-M logo">
+        </div
+        ><div id="sq-company" class="btn-noun" onclick="selectBtn(this.id)">
+            <img src='img/store.svg' alt="Icon for company">
+        </div
+        ><div id="sq-broker" class="btn-noun" onclick="selectBtn(this.id)">
+            <img src='img/person.svg' alt="Icon for broker">
+        </div
+        ><div id="sq-space" class="btn-noun" onclick="selectBtn(this.id)">
+            <img src='img/house.svg' alt="Icon for house">
+        </div>
+    </div>
+    
+    <div id="vertical-container">
+        <div id="sq-ler" class="btn-verb" onclick="selectBtn(this.id)">
+            <img src='img/read.svg' alt="Icon for read">
+        </div>
+        <div id="sq-criar" class="btn-verb" onclick="selectBtn(this.id)">
+            <img src='img/write.svg' alt="Icon for write">
+        </div>
+        <div id="sq-editar" class="btn-verb" onclick="selectBtn(this.id)">
+            <img src='img/edit.svg' alt="Icon for edit">
+        </div>
+        <div id="sq-apagar" class="btn-verb" onclick="selectBtn(this.id)">
+            <img src='img/delete.svg' alt="Icon for erase">
+        </div>
+    </div>
+    
+    <div id="canvas">
+        <img id="spinner" src='img/2.svg' alt="Loading spinner">
+        <div id="stub-create"></div>
+        
+        
+        
+        
+        
+    <!-- VIEW TEMPLATES -------------------------------------------------------->
+    <template id="write-company">
+        <form action="http://localhost:3000/company" method='POST'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="name" id = 'name' placeholder="nome">
+            <!--<input type="text" name="tags" id = 'tags' placeholder="tags">-->
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>
+    <template id="write-broker">
+        <form action="http://localhost:3000/broker" method='POST'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="name" id = 'name' placeholder="nome">
+            <input type="text" name="company" id = 'company' placeholder="imobiliária">
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>        
+    <template id="write-place">
+        <form action="http://localhost:3000/place" method='POST'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="address" id = 'address' placeholder="endereço">
+            <input type="text" name="broker" id = 'broker' placeholder="corretor">
+            <input type="text" name="rent" id = 'rent' placeholder="aluguel">
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>
+        
+        
+    <template id="edit-company">
+        <form action="http://localhost:3000/company" method='PUT'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="name" id = 'name' placeholder="nome">
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>
+    <template id="edit-broker">
+        <form action="http://localhost:3000/broker" method='PUT'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="name" id = 'name' placeholder="nome">
+            <input type="text" name="company" id = 'company' placeholder="imobiliária">
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>
+    <template id="edit-place">
+        <form action="http://localhost:3000/place" method='PUT'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <input type="text" name="address" id = 'address' placeholder="endereço">
+            <input type="text" name="broker" id = 'broker' placeholder="corretor">
+            <input type="text" name="rent" id = 'rent' placeholder="aluguel">
+            <input type='submit' value='adicionar'>
+        </form>
+    </template>
+        
+        
+    <template id="read-company">
+        <div class="inner_selector">
+            <p class='name'>nome</p>
+            <button type='button' class='btn-filter'>veja corretores</button>
+        </div>
+    </template>
+    <template id="read-broker">
+        <p class='name'>nome</p>
+        <p class='name'>imobiliária</p>
+    </template>
+    <template id="read-place">
+        <p class='name'>endereço</p>
+        <p class='name'>corretor</p>
+        <p class='name'>aluguel</p>
+    </template>
+        
+        
+    <template id="erase-company">
+        <form action="http://localhost:3000/place" method='DELETE'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <label for='btn-delete'>Deseja mesmo apagar essa imobiliária?</label>
+            <input type='submit' id='btn-delete' value='deletar'>
+        </form>
+    </template>    
+    <template id="erase-broker">
+        <form action="http://localhost:3000/place" method='DELETE'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
+            <input type='submit' id='btn-delete' value='deletar'>
+        </form>
+    </template>
+    <template id="erase-place">
+        <form action="http://localhost:3000/place" method='DELETE'>
+            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+            <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
+            <input type='submit' id='btn-delete' value='deletar'>
+        </form>
+    </template>
+        
+    </div>
+    
+    
+    
+    <!--<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>-->
+    <!--<script src="script.js"></script>-->
+</body>
+</html>

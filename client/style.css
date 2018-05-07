@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600");
+:root {
+  --spinner-size: calc( ( 100vmin - 60px ) * 0.6 );
+  --dim: 60px;
+}
+
+input[type=submit], input[type=text] {
+  font-size: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+html, body, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+#vertical-container {
+  width: var(--dim);
+  display: inline-block;
+}
+
+#horizontal-container {
+  height: var(--dim);
+  width: 100vw;
+  display: block;
+}
+
+#canvas {
+  height: calc( 100vh - var( --dim ) - 25px);
+  width: calc( 100vw - var( --dim ) - 25px);
+  display: inline-block;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 12px;
+}
+#canvas img {
+  display: block;
+  margin: 0 auto;
+}
+
+#sq-logo {
+  background-color: white;
+  background-color: lightgoldenrodyellow;
+}
+
+#sq-company {
+  background-color: #fad6a6;
+}
+
+#sq-broker {
+  background-color: #deb681;
+}
+
+#sq-space {
+  background-color: #c49c68;
+}
+
+#sq-ler {
+  background-color: #e3e4e2;
+}
+
+#sq-criar {
+  background-color: #e2d2d8;
+}
+
+#sq-editar {
+  background-color: #cdc6d7;
+}
+
+#sq-apagar {
+  background-color: #a7bec4;
+}
+
+#sq-logo {
+  display: inline-block;
+  height: var(--dim);
+  width: var(--dim);
+}
+
+.btn-verb, .btn-noun {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-noun {
+  height: var(--dim);
+  width: calc( ( 100vw - var( --dim ) ) / 3 );
+}
+.btn-noun img {
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-verb {
+  height: calc( ( 100vh - var( --dim ) ) / 4 );
+  width: var(--dim);
+}
+.btn-verb img {
+  margin-top: calc( ( 100vh - var( --dim ) ) / 8 - ( var( --dim ) / 2 ) );
+}
+
+#spinner {
+  display: inline-block;
+  position: absolute;
+  width: var(--spinner-size);
+  bottom: calc( 50vh - ( var( --dim ) / 2 ) - var( --spinner-size ) / 2 );
+  right: calc( 50vw - ( var( --dim ) / 2 ) - var( --spinner-size ) / 2 );
+}
+
+input[type=submit], input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 2px 0;
+  display: block;
+  border: 2px solid #deb681;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  background-color: #deb681;
+  color: #fff;
+  margin-top: 8px;
+}
+
+.bleached {
+  background-color: #fff !important;
+}
+
+/*# sourceMappingURL=client/style.css.map */

@@ -1,0 +1,67 @@
+/// <reference path="_all.d.ts" />
+
+'use strict';
+const express: any = require('express');
+const bodyParser: any = require('body-parser');
+const mongoClient: any = require('mongodb').MongoClient;
+const cors: any = require('cors');
+var db: any;
+mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', (err, client) => {
+    if (err) return console.log(err);
+    db = client.db('dare-db');
+    
+    app.listen(3000, function(){
+	console.log('listening on 3000');
+});
+
+    
+});
+
+//Create and configure app
+const app = express();
+//app.options('*', cors());
+app.use(function (req, res, next) {
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+res.setHeader('Access-Control-Allow-Credentials', true);
+next();
+});
+//app.use(cors());
+
+
+//MIDDLEWARE
+app.use(bodyParser.urlencoded( {extended: true} ));
+
+
+//HANDLING EVENTS
+app.get('/', (req, res, next) => {
+    var cursor = db.collection("company").find().toArray( function(err,results){
+            console.log(results);
+            //res.send(results);
+        });
+});
+
+app.get('/company', (req, res, next) => {
+    var cursor = db.collection("company").find().toArray( function(err,results){
+            //console.log(results);
+            res.send(results);
+        });
+});
+
+app.post('/company', (req, res) => {
+    db.collection('company').save(req.body, (err,result) => {
+        if (err) return console.log(err);
+        
+        console.log('saved to database');
+        let goto:string = req.body['webpage']+'/error';
+        console.log('redirect: '+goto);
+        //res.redirect('http://google.com');
+    });
+    
+   console.log(req.body); 
+});
+
+
+
+

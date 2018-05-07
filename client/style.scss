@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
+
+//GLOBALS
+:root{
+    --spinner-size: calc( ( 100vmin - 60px ) * 0.6 );
+    --dim: 60px;
+}
+
+//COLORS
+$color0: #fff;
+$color1: #fad6a6;
+$color2: #deb681;
+$color3: #c49c68;
+$color4: #e3e4e2;
+$color5: #e2d2d8;
+$color6: #cdc6d7;
+$color7: #a7bec4;
+$color8: #5c3738;
+
+//RESETS
+%base-font{
+    font-size: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+html, body, p, div{
+    margin: 0;
+    padding: 0;
+}
+
+//STRUCTURE
+#vertical-container{
+    width: var( --dim );
+    display: inline-block;
+}
+#horizontal-container{
+    height: var( --dim );
+    width: 100vw;
+    display: block;
+}
+#canvas{
+    height: calc( 100vh - var( --dim ) - 25px);
+    width: calc( 100vw - var( --dim ) - 25px);
+    display: inline-block;
+    position: fixed;
+    bottom:0;
+    right:0;
+    padding: 12px;
+    //border: yellow 1px solid;
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+//BUTTONS
+#sq-logo{
+    background-color: lighten( $color1, 30%);
+    background-color: lightgoldenrodyellow;
+}
+#sq-company{
+    background-color: $color1;
+}
+#sq-broker{
+    background-color: $color2;
+}
+#sq-space{
+    background-color: $color3;
+}
+#sq-ler{
+    background-color: $color4;
+}
+#sq-criar{
+    background-color: $color5;
+}
+#sq-editar{
+    background-color: $color6;
+}
+#sq-apagar{
+    background-color: $color7;
+}
+
+#sq-logo{
+    display: inline-block;
+    height: var( --dim );
+    width: var( --dim );
+}
+%main-btn{
+    display: inline-block;
+    cursor: pointer;
+}
+.btn-noun{
+    @extend %main-btn;
+    height: var( --dim );
+    width: calc( ( 100vw - var( --dim ) ) / 3 );
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+}
+.btn-verb{
+    @extend %main-btn;
+    height: calc( ( 100vh - var( --dim ) ) / 4 );
+    width: var( --dim );
+    img{
+        margin-top: calc( ( 100vh - var( --dim ) ) / 8 - ( var( --dim ) / 2 ) );
+    }
+}
+
+#spinner{
+    display: inline-block;
+    position: absolute;
+    width: var( --spinner-size );
+    bottom: calc( 50vh - ( var( --dim ) / 2 ) - var( --spinner-size ) / 2 );
+    right: calc( 50vw - ( var( --dim ) / 2 ) -  var( --spinner-size ) / 2 );
+}
+
+
+//FORMS
+%form-default{
+    @extend %base-font;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 2px 0;
+    display: block;
+    border: 2px solid $color2;
+    box-sizing: border-box;    
+}
+input[type=text]{
+    @extend %form-default;
+}
+input[type=submit]{
+    @extend %form-default;
+    background-color: $color2;
+    color: $color0;
+    margin-top: 8px;
+}
+
+//YUCK
+.bleached{
+    background-color: $color0 !important;
+}
