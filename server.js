@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 var cors = require('cors');
-var port = 8080;
+var port = process.env.PORT || 8080;
 var db;
 console.log("the code started running");
 mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', function (err, client) {

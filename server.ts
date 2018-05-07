@@ -5,7 +5,7 @@ const express: any = require('express');
 const bodyParser: any = require('body-parser');
 const mongoClient: any = require('mongodb').MongoClient;
 const cors: any = require('cors');
-const port: number = 8080;
+const port: any = process.env.PORT||8080;
 var db: any;
 
 console.log("the code started running");
