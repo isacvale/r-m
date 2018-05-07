@@ -9,8 +9,8 @@ mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', 
     if (err)
         return console.log(err);
     db = client.db('dare-db');
-    app.listen(3000, function () {
-        console.log('listening on 3000');
+    app.listen(8080, function () {
+        console.log('listening on 8080');
     });
 });
 //Create and configure app
