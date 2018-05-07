@@ -5,7 +5,7 @@ const express: any = require('express');
 const bodyParser: any = require('body-parser');
 const mongoClient: any = require('mongodb').MongoClient;
 const cors: any = require('cors');
-const port: any = process.env.PORT||8080;
+const port: any = process.env.PORT||3000;
 var db: any;
 
 console.log("the code started running");
@@ -15,7 +15,7 @@ mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', 
     db = client.db('dare-db');
     
     app.listen(port, function(){
-	console.log('listening on 8080');
+	console.log('listening on port '+String(port));
 });
 
 
@@ -48,8 +48,8 @@ app.get('/', (req, res, next) => {
     var cursor = db.collection("company").find().toArray( function(err,results){
             console.log(results);
         console.log("the code milestone 4");
-        res.redirect('http://isacvale.com');
-            //res.send(results);
+        //res.redirect('http://isacvale.com');
+            res.send("It works!");
         });
 });
 

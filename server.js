@@ -4,7 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 var cors = require('cors');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 var db;
 console.log("the code started running");
 mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', function (err, client) {
@@ -12,7 +12,7 @@ mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', 
         return console.log(err);
     db = client.db('dare-db');
     app.listen(port, function () {
-        console.log('listening on 8080');
+        console.log('listening on port ' + String(port));
     });
 });
 console.log("the code milestone 1");
@@ -36,8 +36,8 @@ app.get('/', function (req, res, next) {
     var cursor = db.collection("company").find().toArray(function (err, results) {
         console.log(results);
         console.log("the code milestone 4");
-        res.redirect('http://isacvale.com');
-        //res.send(results);
+        //res.redirect('http://isacvale.com');
+        res.send("It works!");
     });
 });
 app.get('/company', function (req, res, next) {
