@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 var cors = require('cors');
 var port = process.env.PORT || 3000;
+//const port: any = 3000;
+var serverAddress = "https://blooming-hamlet-30182.herokuapp.com/";
 var db;
 console.log("the code started running");
 mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', function (err, client) {

@@ -6,6 +6,8 @@ const bodyParser: any = require('body-parser');
 const mongoClient: any = require('mongodb').MongoClient;
 const cors: any = require('cors');
 const port: any = process.env.PORT||3000;
+//const port: any = 3000;
+const serverAddress:string = "https://blooming-hamlet-30182.herokuapp.com/";
 var db: any;
 
 console.log("the code started running");

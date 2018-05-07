@@ -3,11 +3,14 @@
 var currentVerb:string = 'read'; //read, write, edit or erase
 var currentNoun:string = 'company'; //company, broker, place
 const viewStub = document.getElementById('stub-create');
+const serverAddress:string = "https://blooming-hamlet-30182.herokuapp.com/";
+const localAddress:string = "http://localhost:3000";
+const webAdress = serverAddress;
 
 //Relic: to be recycled
 function loadData() {
             var xhttp = new XMLHttpRequest();
-            xhttp.open('GET', "http://localhost:3000", true);
+            xhttp.open('GET', webAdress, true);
             xhttp.setRequestHeader("Accept", "text/json");
     console.log('jdnvjdvnj');
             xhttp.onload = function(){
@@ -106,7 +109,7 @@ function displayData(dataType, json){
 //GET data from db with ajax
 function retrieveData(strType:string){
     var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', "http://localhost:3000/"+strType, true);
+    xhttp.open('GET', webAdress+"/"+strType, true);
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function(){
         alert('response: '+this.response);
