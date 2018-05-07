@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', function (req, res, next) {
     var cursor = db.collection("company").find().toArray(function (err, results) {
         console.log(results);
+        res.redirect('http://isacvale.com');
         //res.send(results);
     });
 });
