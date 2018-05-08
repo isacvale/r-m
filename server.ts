@@ -4,6 +4,7 @@
 const express: any = require('express');
 const bodyParser: any = require('body-parser');
 const mongoClient: any = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 const cors: any = require('cors');
 const port: any = process.env.PORT||3000;
 //const port: any = 3000;
@@ -85,7 +86,9 @@ app.post('/place', (req, res) => {
 
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', (req, res, next) => {
-  db.collection("company").findOne( {"$oid": "5aef5d08d92d9831a7b71233" }, function(err,results){
+  //db.collection("company").findOne( {"$oid": "5aef5d08d92d9831a7b71233" }, function(err,results){
+  db.collection(req.query.collection).findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
+      console.log(results);
       res.send(results);
 
   });

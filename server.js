@@ -3,6 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectID;
 var cors = require('cors');
 var port = process.env.PORT || 3000;
 //const port: any = 3000;
@@ -79,7 +80,9 @@ app.post('/place', function (req, res) {
 });
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', function (req, res, next) {
-    db.collection("company").findOne({ "$oid": "5aef5d08d92d9831a7b71233" }, function (err, results) {
+    //db.collection("company").findOne( {"$oid": "5aef5d08d92d9831a7b71233" }, function(err,results){
+    db.collection(req.query.collection).findOne({ _id: ObjectId(req.query.entryID) }, function (err, results) {
+        console.log(results);
         res.send(results);
     });
 });
