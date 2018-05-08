@@ -80,18 +80,16 @@
 
     <template id="edit-company">
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-company" method='POST'>
-            <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
-            <input type='hidden' name="entryID" id='entryID' placeholder="nome">
-            <input type='hidden' value="..." name="webpage">
+            <input type='hidden' name="noun" id='noun' value="company">
+            <input type='hidden' name="entryID" id='entryID' placeholder="entryID">
             <input type="text" name="name" id='name' placeholder="nome">
             <input type='submit' value='confirmar'>
         </form>
     </template>
     <template id="edit-broker">
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-broker" method='POST'>
-          <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
-          <input type='hidden' name="entryID" id='entryID' placeholder="nome">
-            <input type='hidden' value="..." name="webpage">
+          <input type='hidden' name="noun" id='noun' value="company">
+          <input type='hidden' name="entryID" id='entryID'>
             <input type="text" name="name" id='name' placeholder="nome">
             <input type="text" name="company" id='company' placeholder="imobiliária">
             <input type='submit' value='confirmar'>
@@ -101,7 +99,6 @@
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-place" method='POST'>
           <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
           <input type='hidden' name="entryID" id='entryID' placeholder="nome">
-            <input type='hidden' value="..." name="webpage">
             <input type="text" name="address" id='address' placeholder="endereço">
             <input type="text" name="broker" id='broker' placeholder="corretor">
             <input type="text" name="rent" id='rent' placeholder="aluguel">
@@ -113,7 +110,7 @@
     <template id="read-company">
         <div class="inner_selector" onclick="selectItem(this)">
             <p class="_type">company</p>
-            <p class="_id">id</p>
+            <p class="entryID">id</p>
             <p class='name'>nome</p>
             <button type='button' class='btn-filter'>veja corretores</button>
         </div>
@@ -121,7 +118,7 @@
     <template id="read-broker">
         <div class="inner_selector" onclick="selectItem(this)">
             <p class="_type">broker</p>
-            <p class="_id">id</p>
+            <p class="entryID">id</p>
             <p class='name'>nome</p>
             <p class='company'>imobiliária</p>
         </div>
@@ -129,7 +126,7 @@
     <template id="read-place">
         <div class="inner_selector" onclick="selectItem(this)">
             <p class="_type">place</p>
-            <p class="_id">id</p>
+            <p class="entryID">id</p>
             <p class='address'>endereço</p>
             <p class='broker'>corretor</p>
             <p class='rent'>aluguel</p>

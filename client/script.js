@@ -93,7 +93,7 @@ function displayData(dataType, json) {
         var template = document.getElementById('read-' + dataType);
         //Get the stub where to place the entry
         var contentStub = document.getElementById('stub-create');
-        template.content.querySelector("p._id").innerHTML = entry['_id'];
+        template.content.querySelector("p.entryID").innerHTML = entry['_id'];
         if (dataType == "company") {
             //Get the paragraph "name" within the template element
             var nameField = template.content.querySelector("p.name");
@@ -141,7 +141,7 @@ function autoComplete(dataType, json) {
         //Set it to use the name in the database
         nameField.value = json['name'];
         companyField.value = json['company'];
-        template.content.querySelector("input[name=_id]").value = json['_id'];
+        template.content.querySelector("input[name=entryID]").value = json['_id'];
     }
     else if (dataType == "place") {
         //Get the paragraph "name" within the template element
@@ -152,7 +152,7 @@ function autoComplete(dataType, json) {
         addressField.value = json['address'];
         brokerField.value = json['broker'];
         rentField.value = json['rent'];
-        template.content.querySelector("input[name=_id]").value = json['_id'];
+        template.content.querySelector("input[name=entryID]").value = json['_id'];
     }
 }
 //On click select instance
@@ -168,13 +168,13 @@ function selectItem(selectedNode) {
     }
     selectedNode.classList.add("selected");
     if (selectedNode.querySelector("p._type").innerHTML == 'company') {
-        companyID = selectedNode.querySelector("p._id").innerHTML;
+        companyID = selectedNode.querySelector("p.entryID").innerHTML;
     }
     else if (selectedNode.querySelector("p._type").innerHTML == 'broker') {
-        brokerID = selectedNode.querySelector("p._id").innerHTML;
+        brokerID = selectedNode.querySelector("p.entryID").innerHTML;
     }
     else if (selectedNode.querySelector("p._type").innerHTML == 'place') {
-        placeID = selectedNode.querySelector("p._id").innerHTML;
+        placeID = selectedNode.querySelector("p.entryID").innerHTML;
     }
     console.log(companyID + '/' + brokerID + '/' + placeID);
 }
@@ -207,7 +207,7 @@ function getPreSelected(itemID) {
     var viewStub = document.getElementById('stub-create');
     var items = viewStub.children;
     for (var i = 0; i < items.length; i++) {
-        if (items[i].querySelector("._id").innerHTML == itemID)
+        if (items[i].querySelector(".entryID").innerHTML == itemID)
             return items[i];
     }
 }

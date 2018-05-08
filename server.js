@@ -112,7 +112,6 @@ app.get('/fetch', function (req, res, next) {
 //   });
 app.post('/edit-company', function (req, res) {
     var entryID = req.body.entryID;
-    var entryNoun = req.body.noun;
     db.collection('company').update({ _id: ObjectId(entryID) }, {
         name: req.body.name
     }, function (err, results) {
@@ -123,7 +122,6 @@ app.post('/edit-company', function (req, res) {
 });
 app.post('/edit-broker', function (req, res) {
     var entryID = req.body.entryID;
-    var entryNoun = req.body.noun;
     db.collection('broker').update({ _id: ObjectId(entryID) }, {
         name: req.body.name,
         company: req.body.company
@@ -132,7 +130,6 @@ app.post('/edit-broker', function (req, res) {
 });
 app.post('/edit-place', function (req, res) {
     var entryID = req.body.entryID;
-    var entryNoun = req.body.noun;
     db.collection('place').update({ _id: ObjectId(entryID) }, {
         address: req.body.address,
         broker: req.body.broker,
