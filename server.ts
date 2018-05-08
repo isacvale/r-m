@@ -85,33 +85,42 @@ app.post('/place', (req, res) => {
 
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', (req, res, next) => {
-    var answer;
-    var cursor = db.collection("company").find().toArray(
-      function(err,results){
-        let rArr = JSON.parse(results);
-        rArr.forEach(
-          function(entry){
-          if(entry["_id"]==req.query.entryID) answer = entry;
-          });
-        });
-    var cursor = db.collection("broker").find().toArray(
-      function(err,results){
-        let rArr = JSON.parse(results);
-        rArr.forEach(
-          function(entry){
-          if(entry["_id"]==req.query.entryID) answer = entry;
-          });
-        });
-        var cursor = db.collection("place").find().toArray(
-          function(err,results){
-            let rArr = JSON.parse(results);
-            rArr.forEach(
-              function(entry){
-              if(entry["_id"]==req.query.entryID) answer = entry;
-              });
-            });
-      res.send(answer);
-    });
+  db.collection("company").findOne( {"$oid": "5aef5d08d92d9831a7b71233" }, function(err,results){
+      res.send(results);
+
+  });
+});
+
+
+
+
+    // var answer;
+    // var cursor = db.collection("company").find().toArray(
+    //   function(err,results){
+    //     let rArr = JSON.parse(results);
+    //     rArr.forEach(
+    //       function(entry){
+    //       if(entry["_id"]==req.query.entryID) answer = entry;
+    //       });
+    //     });
+    // var cursor = db.collection("broker").find().toArray(
+    //   function(err,results){
+    //     let rArr = JSON.parse(results);
+    //     rArr.forEach(
+    //       function(entry){
+    //       if(entry["_id"]==req.query.entryID) answer = entry;
+    //       });
+    //     });
+    //     var cursor = db.collection("place").find().toArray(
+    //       function(err,results){
+    //         let rArr = JSON.parse(results);
+    //         rArr.forEach(
+    //           function(entry){
+    //           if(entry["_id"]==req.query.entryID) answer = entry;
+    //           });
+    //         });
+    //   res.send(answer);
+    // });
 
 
     // let itemID = req.query.entryID;
