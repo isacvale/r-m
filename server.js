@@ -124,7 +124,8 @@ app.post('/edit-company', function (req, res) {
 app.post('/edit-broker', function (req, res) {
     var entryID = req.body.entryID;
     //db.collection('broker').update( {_id:ObjectId(entryID)}, {
-    db.collection('broker').update({ _id: entryID }, {
+    //db.collection('broker').update( {_id:entryID}, {
+    db.collection('broker').update({ name: req.body.name }, {
         name: req.body.name,
         company: req.body.company
     });
