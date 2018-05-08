@@ -298,7 +298,7 @@ function fetchEntry(collection:string, entryID:string){
         //console.log(this.responseText);
         alert(this.response);
         if(currentVerb=='edit')  autoComplete(currentNoun,JSON.parse(this.responseText));
-        if(currentVerb=='delete') autoCompleteDelete(currentNoun,JSON.parse(this.responseText));
+        if(currentVerb=='erase') autoCompleteDelete(currentNoun,JSON.parse(this.responseText));
         }
         xhttp.send();
 }
