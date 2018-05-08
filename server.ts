@@ -94,6 +94,17 @@ app.get('/fetch', (req, res, next) => {
   });
 });
 
+
+//>>>>POST to delete
+app.post('/delete-company', (req, res, next) => {
+  //db.collection('company').findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
+  db.collection('company').remove({_id:req.query.entryID }, function(err,results){
+      res.redirect("http://rm.isacvale.com");
+  });
+});
+
+
+
 //>>>>POSTS to rewrite db
 // app.post('/edit', (req, res) => {
 //     let entryID = req.body["_id"];
@@ -132,8 +143,8 @@ app.get('/fetch', (req, res, next) => {
   app.post('/edit-broker', (req, res) => {
       let entryID = req.body.entryID;
       //db.collection('broker').update( {_id:ObjectId(entryID)}, {
-      //db.collection('broker').update( {_id:entryID}, {
-      db.collection('broker').update( {name:req.body.name}, {
+      db.collection('broker').update( {_id:entryID}, {
+      //db.collection('broker').update( {name:req.body.name}, {
         name:req.body.name,
         company:req.body.company
         });

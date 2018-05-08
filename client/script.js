@@ -121,8 +121,6 @@ function displayData(dataType, json) {
 }
 //Similar to displayData but meant for editar
 function autoComplete(dataType, json) {
-    alert(json);
-    console.log(json);
     //Get the template element
     var template = document.getElementById('edit-' + dataType);
     //Get the stub where to place the entry
@@ -154,6 +152,15 @@ function autoComplete(dataType, json) {
         rentField.value = json['rent'];
         template.content.querySelector("input[name=entryID]").value = json['_id'];
     }
+}
+//Similar to displayData but meant for editar
+function autoCompleteDelete(dataType, json) {
+    //Get the template element
+    var template = document.getElementById('delete-' + dataType);
+    //Get the stub where to place the entry
+    var contentStub = document.getElementById('stub-create');
+    var idField = contentStub.querySelector("input[name=entryID]");
+    idField.value = json['_id'];
 }
 //On click select instance
 function selectItem(selectedNode) {
@@ -264,6 +271,8 @@ function fetchEntry(collection, entryID) {
         //console.log(this.responseText);
         if (currentVerb == 'edit')
             autoComplete(currentNoun, JSON.parse(this.responseText));
+        if (currentVerb == 'delete')
+            autoCompleteDelete(currentNoun, JSON.parse(this.responseText));
     };
     xhttp.send();
 }

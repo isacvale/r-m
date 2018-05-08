@@ -136,27 +136,33 @@
 
     <template id="erase-company">
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='DELETE'>
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
-            <label for='btn-delete'>Deseja mesmo apagar essa imobiliária?</label>
-            <input type='submit' id='btn-delete' value='deletar'>
-        </form>
+        <div class="inner_selector" >
+          <form action="https://blooming-hamlet-30182.herokuapp.com/delete-company" method='POST'>
+              <input type='hidden' value="." name="entryID">
+              <label for='btn-delete'>Deseja mesmo apagar essa imobiliária?</label>
+              <input type='submit' id='btn-delete' value='deletar'>
+          </form>
+      </div>
     </template>
     <template id="erase-broker">
+      <div class="inner_selector" >
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='DELETE'>
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-broker" method='DELETE'>
+            <input type='hidden' value="." name="entryID">
             <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
             <input type='submit' id='btn-delete' value='deletar'>
         </form>
+      </div>
     </template>
     <template id="erase-place">
+      <div class="inner_selector" >
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='DELETE'>
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
+        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-place" method='DELETE'>
+            <input type='hidden' value="." name="entryID">
             <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
             <input type='submit' id='btn-delete' value='deletar'>
         </form>
+      </div>
     </template>
 
     </div>
