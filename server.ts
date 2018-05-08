@@ -93,3 +93,38 @@ app.get('/fetch', (req, res, next) => {
 
   });
 });
+
+//>>>>POSTS to rewrite db
+app.post('/edit', (req, res) => {
+    let entryID = req.body["_id"];
+    let entryNoun = req.body.noun;
+    if(req.body.noun=="company"){
+      db.collection('company').update( {_id:ObjectId(entryID)}, {
+        name:req.body.name
+      });
+    }
+    else if(req.body.noun=="broker"){
+      db.collection('broker').update( {_id:ObjectId(entryID)}, {
+        name:req.body.name,
+        company:req.body.company
+      });
+    }
+    else if(req.body.noun=="place"){
+      db.collection('place').update( {_id:ObjectId(entryID)}, {
+        address:req.body.address,
+        broker:req.body.broker,
+        rent:req.body.rent
+      });
+    }
+  });
+
+
+
+      // .save(req.body, (err,result) => {{"$oid": "5aef5d08d92d9831a7b71233" }
+      //     if (err) return console.log(err);
+      //     let goto:string = req.body['webpage']+'/error';
+      //     console.log(">>>>>>>: "+req.body['webpage']);
+      //     res.redirect("http://rm.isacvale.com");
+      // });
+//     }
+// });

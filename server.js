@@ -86,3 +86,26 @@ app.get('/fetch', function (req, res, next) {
         res.send(results);
     });
 });
+//>>>>POSTS to rewrite db
+app.post('/edit', function (req, res) {
+    var entryID = req.body["_id"];
+    var entryNoun = req.body.noun;
+    if (req.body.noun == "company") {
+        db.collection('company').update({ _id: ObjectId(entryID) }, {
+            name: req.body.name
+        });
+    }
+    else if (req.body.noun == "broker") {
+        db.collection('broker').update({ _id: ObjectId(entryID) }, {
+            name: req.body.name,
+            company: req.body.company
+        });
+    }
+    else if (req.body.noun == "place") {
+        db.collection('place').update({ _id: ObjectId(entryID) }, {
+            address: req.body.address,
+            broker: req.body.broker,
+            rent: req.body.rent
+        });
+    }
+});

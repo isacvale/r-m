@@ -132,14 +132,16 @@ function autoComplete(dataType, json) {
         var nameField = contentStub.querySelector("input[name=name]");
         //Set it to use the name in the database
         nameField.value = json['name'];
+        template.content.querySelector("input[name=_id]").value = json['_id'];
     }
-    else if (dataType == "company") {
+    else if (dataType == "broker") {
         //Get the paragraph "name" within the template element
         var nameField = contentStub.querySelector("input[name=name]");
         var companyField = contentStub.querySelector("input[name=company]");
         //Set it to use the name in the database
         nameField.value = json['name'];
         companyField.value = json['company'];
+        template.content.querySelector("input[name=_id]").value = json['_id'];
     }
     else if (dataType == "place") {
         //Get the paragraph "name" within the template element
@@ -150,6 +152,7 @@ function autoComplete(dataType, json) {
         addressField.value = json['address'];
         brokerField.value = json['broker'];
         rentField.value = json['rent'];
+        template.content.querySelector("input[name=_id]").value = json['_id'];
     }
 }
 //On click select instance

@@ -23,7 +23,7 @@
             <img src='img/house.svg' alt="Icon for house">
         </div>
     </div>
-    
+
     <div id="vertical-container">
         <div id="sq-ler" class="btn-verb" onclick="selectBtn(this.id)">
             <img src='img/read.svg' alt="Icon for read">
@@ -38,15 +38,15 @@
             <img src='img/delete.svg' alt="Icon for erase">
         </div>
     </div>
-    
+
     <div id="canvas">
         <img id="spinner" src='img/2.svg' alt="Loading spinner">
         <div id="stub-create"></div>
-        
-        
-        
-        
-        
+
+
+
+
+
     <!-- VIEW TEMPLATES -------------------------------------------------------->
     <template id="write-company">
         <form action="https://blooming-hamlet-30182.herokuapp.com/company" method='POST'>
@@ -65,7 +65,7 @@
             <input type="text" name="company" id = 'company' placeholder="imobiliária">
             <input type='submit' value='adicionar'>
         </form>
-    </template>        
+    </template>
     <template id="write-place">
         <!--<form action="http://localhost:3000/place" method='POST'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='POST'>
@@ -76,11 +76,13 @@
             <input type='submit' value='adicionar'>
         </form>
     </template>
-        
-        
+
+
     <template id="edit-company">
         <!--<form action="http://localhost:3000/company" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/company-edit" method='POST'>
+            <input type="text" name="noun" id = 'name' placeholder="nome" value="company">
+            <input type="text" name="_id" id = 'name' placeholder="nome">
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="name" id = 'name' placeholder="nome">
             <input type='submit' value='adicionar'>
@@ -89,6 +91,8 @@
     <template id="edit-broker">
         <!--<form action="http://localhost:3000/broker" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/broker-edit" method='POST'>
+          <input type="text" name="noun" id = 'name' placeholder="nome" value="company">
+          <input type="text" name="_id" id = 'name' placeholder="nome">
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="name" id = 'name' placeholder="nome">
             <input type="text" name="company" id = 'company' placeholder="imobiliária">
@@ -98,6 +102,8 @@
     <template id="edit-place">
         <!--<form action="http://localhost:3000/place" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/place-edit" method='POST'>
+          <input type="text" name="noun" id = 'name' placeholder="nome" value="company">
+          <input type="text" name="_id" id = 'name' placeholder="nome">
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="address" id = 'address' placeholder="endereço">
             <input type="text" name="broker" id = 'broker' placeholder="corretor">
@@ -105,8 +111,8 @@
             <input type='submit' value='adicionar'>
         </form>
     </template>
-        
-        
+
+
     <template id="read-company">
         <div class="inner_selector" onclick="selectItem(this)">
             <p class="_type">company</p>
@@ -132,8 +138,8 @@
             <p class='rent'>aluguel</p>
         </div>
     </template>
-        
-        
+
+
     <template id="erase-company">
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='DELETE'>
@@ -141,7 +147,7 @@
             <label for='btn-delete'>Deseja mesmo apagar essa imobiliária?</label>
             <input type='submit' id='btn-delete' value='deletar'>
         </form>
-    </template>    
+    </template>
     <template id="erase-broker">
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='DELETE'>
@@ -158,11 +164,11 @@
             <input type='submit' id='btn-delete' value='deletar'>
         </form>
     </template>
-        
+
     </div>
-    
-    
-    
+
+
+
     <!--<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
