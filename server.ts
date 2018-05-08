@@ -13,10 +13,10 @@ var db: any;
 mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', (err, client) => {
     if (err) return console.log(err);
     db = client.db('dare-db');
-    
+
     app.listen(port, function(){
 	console.log('listening on port '+String(port));
-    });    
+    });
 });
 
 
@@ -86,6 +86,9 @@ app.post('/place', (req, res) => {
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', (req, res, next) => {
     var cursor = db.collection(req.query.collection).find({"_id":req.query.itemID}).toArray( function(err,results){
-            res.send(results);
-        });
+console.log('---vvv');
+      console.log(req.query.collection);
+      console.log(req.query.itemID);
+      res.send(results);
+    });
 });

@@ -236,7 +236,8 @@ function checkFetchEntry() {
 }
 //Query the db for a specific _id in a specific collection
 function fetchEntry(collection, entryID) {
-    var parameters = "/?collection=" + collection + "&entryID=" + entryID;
+    var parameters = "?collection=" + collection + "&entryID=" + entryID;
+    console.log('>>>' + webAdress + 'fetch' + parameters);
     var xhttp = new XMLHttpRequest();
     xhttp.open('GET', webAdress + 'fetch' + parameters, true);
     xhttp.setRequestHeader("Accept", "text/json");
