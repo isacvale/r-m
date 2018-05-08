@@ -90,7 +90,8 @@ app.get('/fetch', function (req, res, next) {
 app.post('/delete-company', function (req, res, next) {
     //db.collection('company').findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
     db.collection('company').remove({ _id: req.query.entryID }, function (err, results) {
-        res.redirect("http://rm.isacvale.com");
+        res.send(req.query.entryID);
+        //res.redirect("http://rm.isacvale.com");
     });
 });
 //>>>>POSTS to rewrite db
