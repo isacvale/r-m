@@ -17,12 +17,12 @@ var placeID:string;
     //Let's fix the form's action if running locally
     let templatesArr = ["write-company","write-broker","write-place"];
     let tAction:string;
-    
+
     templatesArr.forEach(function(tID){
         if(tID == "write-company") tAction = "/company";
         else if(tID == "write-broker") tAction = "/broker";
         else if(tID == "write-place") tAction = "/place";
-        
+
         let template = document.getElementById(tID);
         console.log(template+'/'+tID);
         console.log(template.content)
@@ -50,16 +50,16 @@ function loadData() {
 //What to do when first loading
 window.onload = function(){
     setTimeout( removeSpinner, 1500 );
-    
+
     //Let's preload ReadCompany. First we bleach the buttons.
     fixBleach('verb', 'sq-ler');
     fixBleach('noun', 'sq-company');
-    
-    
+
+
     //Finally we retrieve and display the data
     let dataDB = retrieveData('company');
     //alert(dataDB);
-    
+
     //loadTemplate();
 }
 
@@ -101,11 +101,11 @@ function selectBtn(btn_id){
         if(currentVerb!="read"){
             loadTemplate();
         }
-        
+
         if(currentVerb=="read"){
             retrieveData(currentNoun);
         }
-        
+
         if(currentVerb=='edit'){
             checkFetchEntry();
         }
@@ -115,7 +115,7 @@ function selectBtn(btn_id){
 //Load content template to canvas
 function loadTemplate(){
     let viewStub = document.getElementById('stub-create');
-    
+
     let templateId: string = currentVerb+'-'+currentNoun;
     let viewTemplate = document.getElementById(templateId);
     viewStub.innerHTML = viewTemplate.innerHTML;
@@ -124,27 +124,27 @@ function loadTemplate(){
 
 //Load the template, reassign results and paste them on canvas
 function displayData(dataType, json){
-    
+
     json.forEach((entry)=>{
-        
+
         //Get the template element
         let template = document.getElementById('read-'+dataType);
         //Get the stub where to place the entry
         let contentStub = document.getElementById('stub-create');
-        
+
         template.content.querySelector("p._id").innerHTML = entry['_id'];
-        
+
         if(dataType=="company"){
             //Get the paragraph "name" within the template element
             let nameField = template.content.querySelector("p.name");
             //Set it to use the name in the database
-            nameField.innerHTML = entry['name']; 
+            nameField.innerHTML = entry['name'];
         }
         else if(dataType=="broker"){
             //Get the paragraph "name" within the template element
             let nameField = template.content.querySelector("p.name");
             //Set it to use the name in the database
-            nameField.innerHTML = entry['name']; 
+            nameField.innerHTML = entry['name'];
             template.content.querySelector("p.name").innerHTML = entry['company'];
         }
         else if(dataType=="place"){
@@ -152,18 +152,18 @@ function displayData(dataType, json){
             template.content.querySelector("p.broker").innerHTML = entry['broker'];
             template.content.querySelector("p.rent").innerHTML = entry['rent'];
         }
-        
+
         //Clone the entry with the db data
         var clone = document.importNode(template.content,true);
         //Append the clone to the stub
         contentStub.appendChild(clone);
-        
+
     });
 }
 
 //On click select instance
 function selectItem(selectedNode){
-    
+
     //First we get the element's parent, then a list of siblings.
     let parentNode = selectedNode.parentElement;
     let siblingNodes = parentNode.children;
@@ -174,8 +174,8 @@ function selectItem(selectedNode){
         node.classList.remove("selected");
     }
     selectedNode.classList.add("selected");
-    
-    
+
+
     if(selectedNode.querySelector("p._type").innerHTML == 'company'){
         companyID = selectedNode.querySelector("p._id").innerHTML;
     }
@@ -185,7 +185,7 @@ function selectItem(selectedNode){
     else if(selectedNode.querySelector("p._type").innerHTML == 'place'){
         placeID = selectedNode.querySelector("p._id").innerHTML;
     }
-    
+
     console.log(companyID+'/'+brokerID+'/'+placeID);
 }
 
@@ -210,7 +210,7 @@ function preSelect(){
     }
 }
 
-//Helper function 
+//Helper function
 function getPreSelected(itemID){
     let viewStub = document.getElementById('stub-create');
     let items = viewStub.children;
@@ -244,18 +244,18 @@ function checkFetchEntry(){
     }
     else if(currentNoun=="broker"){
         if(brokerID==undefined){clearView();}
-        else {fetchEntry("broker", companyID);}
+        else {fetchEntry("broker", brokerID);}
     }
     else if(currentNoun=="place"){
         if(placeID==undefined){clearView();}
-        else {fetchEntry("place", companyID);}
+        else {fetchEntry("place", placeID);}
     }
 }
 
 //Query the db for a specific _id in a specific collection
 function fetchEntry(collection:string, entryID:string){
     let parameters:string = "?collection="+collection+"&entryID="+entryID;
-    
+
     console.log('>>>'+webAdress+'fetch'+parameters)
     var xhttp = new XMLHttpRequest();
     xhttp.open('GET', webAdress+'fetch'+parameters, true);
@@ -270,13 +270,13 @@ function fetchEntry(collection:string, entryID:string){
 //Remove spinner
 function removeSpinner(){
     let spinner = document.getElementById("spinner");
-    
+
     spinner.style.display = 'none';
 }
 //Clear content on canvas
 function clearView(){
     let viewStub = document.getElementById('stub-create');
-    
+
     viewStub.innerHTML = "";
 }
 //Make main buttons toggle white for selected
@@ -305,5 +305,3 @@ $color5: #e2d2d8;
 $color6: #cdc6d7;
 $color7: #a7bec4;
 $color8: #5c3738;*/
-
-

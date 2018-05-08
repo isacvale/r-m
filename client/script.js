@@ -13,12 +13,12 @@ var placeID;
     //Let's fix the form's action if running locally
     let templatesArr = ["write-company","write-broker","write-place"];
     let tAction:string;
-    
+
     templatesArr.forEach(function(tID){
         if(tID == "write-company") tAction = "/company";
         else if(tID == "write-broker") tAction = "/broker";
         else if(tID == "write-place") tAction = "/place";
-        
+
         let template = document.getElementById(tID);
         console.log(template+'/'+tID);
         console.log(template.content)
@@ -183,7 +183,7 @@ function preSelect() {
             selectItem(items[0]);
     }
 }
-//Helper function 
+//Helper function
 function getPreSelected(itemID) {
     var viewStub = document.getElementById('stub-create');
     var items = viewStub.children;
@@ -222,7 +222,7 @@ function checkFetchEntry() {
             clearView();
         }
         else {
-            fetchEntry("broker", companyID);
+            fetchEntry("broker", brokerID);
         }
     }
     else if (currentNoun == "place") {
@@ -230,7 +230,7 @@ function checkFetchEntry() {
             clearView();
         }
         else {
-            fetchEntry("place", companyID);
+            fetchEntry("place", placeID);
         }
     }
 }
