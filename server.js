@@ -58,7 +58,7 @@ app.post('/company', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });
 app.post('/broker', function (req, res) {
@@ -66,7 +66,7 @@ app.post('/broker', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });
 app.post('/place', function (req, res) {
@@ -74,6 +74,6 @@ app.post('/place', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });

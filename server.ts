@@ -65,21 +65,21 @@ app.post('/company', (req, res) => {
     db.collection('company').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });
 app.post('/broker', (req, res) => {
     db.collection('broker').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });
 app.post('/place', (req, res) => {
     db.collection('place').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
-        res.redirect('/');
+        res.redirect(req.body['webpage']);
     });
 });
 
