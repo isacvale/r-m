@@ -192,10 +192,6 @@ console.log(444);
 
   let idField = contentStub.querySelector("input[name=entryID]");
   idField.value = json['_id'];
-  alert('from')
-  alert(json['_id']);
-  alert(idField.value);
-  alert('done')
 }
 // uId = ObjectId("59b59b34852a9619b486634f")
 // User.findOne({"_id": uId}, function(err, user){
@@ -304,7 +300,7 @@ function fetchEntry(collection:string, entryID:string){
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function(){
         //console.log(this.responseText);
-        alert(this.response);
+        //alert(this.response);
         if(currentVerb=='edit')  autoComplete(currentNoun,JSON.parse(this.responseText));
         if(currentVerb=='erase') autoCompleteDelete(currentNoun,JSON.parse(this.responseText));
         }

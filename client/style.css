@@ -176,7 +176,7 @@ input[type=submit] {
   width: 100%;
 }
 
-label {
+.inner_selector > form > label {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 22px;
