@@ -58,22 +58,22 @@ app.post('/company', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
+        res.redirect('/');
     });
-    console.log(req.body);
 });
 app.post('/broker', function (req, res) {
     db.collection('broker').save(req.body, function (err, result) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
+        res.redirect('/');
     });
-    console.log(req.body);
 });
 app.post('/place', function (req, res) {
     db.collection('place').save(req.body, function (err, result) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
+        res.redirect('/');
     });
-    console.log(req.body);
 });
