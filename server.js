@@ -108,4 +108,5 @@ app.post('/edit', function (req, res) {
             rent: req.body.rent
         });
     }
+    res.redirect("http://rm.isacvale.com");
 });
