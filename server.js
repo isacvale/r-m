@@ -87,33 +87,53 @@ app.get('/fetch', function (req, res, next) {
     });
 });
 //>>>>POSTS to rewrite db
-app.post('/edit', function (req, res) {
-    var entryID = req.body["_id"];
-    var entryNoun = req.body.noun;
-    if (req.body.noun == "company") {
-        db.collection('company').update({ _id: ObjectId(entryID) }, {
-            name: req.body.name
-        });
-    }
-    else if (req.body.noun == "broker") {
-        db.collection('broker').update({ _id: ObjectId(entryID) }, {
-            name: req.body.name,
-            company: req.body.company
-        });
-    }
-    else if (req.body.noun == "place") {
-        db.collection('place').update({ _id: ObjectId(entryID) }, {
-            address: req.body.address,
-            broker: req.body.broker,
-            rent: req.body.rent
-        });
-    }
-    res.redirect("http://rm.isacvale.com");
-});
+// app.post('/edit', (req, res) => {
+//     let entryID = req.body["_id"];
+//     let entryNoun = req.body.noun;
+//     if(req.body.noun=="company"){
+//       db.collection('company').update( {_id:ObjectId(entryID)}, {
+//         name:req.body.name
+//       });
+//     }
+//     else if(req.body.noun=="broker"){
+//       db.collection('broker').update( {_id:ObjectId(entryID)}, {
+//         name:req.body.name,
+//         company:req.body.company
+//       });
+//     }
+//     else if(req.body.noun=="place"){
+//       db.collection('place').update( {_id:ObjectId(entryID)}, {
+//         address:req.body.address,
+//         broker:req.body.broker,
+//         rent:req.body.rent
+//       });
+//     }
+//     res.redirect("http://rm.isacvale.com");
+//   });
 app.post('/edit-company', function (req, res) {
     var entryID = req.body.entryID;
     var entryNoun = req.body.noun;
     db.collection('company').update({ _id: ObjectId(entryID) }, {
         name: req.body.name
     });
+    res.redirect("http://rm.isacvale.com");
+});
+app.post('/edit-broker', function (req, res) {
+    var entryID = req.body.entryID;
+    var entryNoun = req.body.noun;
+    db.collection('broker').update({ _id: ObjectId(entryID) }, {
+        name: req.body.name,
+        company: req.body.company
+    });
+    res.redirect("http://rm.isacvale.com");
+});
+app.post('/edit-place', function (req, res) {
+    var entryID = req.body.entryID;
+    var entryNoun = req.body.noun;
+    db.collection('place').update({ _id: ObjectId(entryID) }, {
+        address: req.body.address,
+        broker: req.body.broker,
+        rent: req.body.rent
+    });
+    res.redirect("http://rm.isacvale.com");
 });

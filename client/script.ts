@@ -157,7 +157,7 @@ console.log(json);
       let nameField = contentStub.querySelector("input[name=name]");
       //Set it to use the name in the database
       nameField.value = json['name'];
-      template.content.querySelector("input[name=_id]").value = json['_id'];
+      template.content.querySelector("input[name=entryID]").value = json['_id'];
   }
   else if(dataType=="broker"){
       //Get the paragraph "name" within the template element
