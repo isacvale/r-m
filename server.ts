@@ -85,10 +85,10 @@ app.post('/place', (req, res) => {
 
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', (req, res, next) => {
-    var cursor = db.collection(req.query.collection).find({"_id":req.query.entryID}).toArray( function(err,results){
-console.log('---vvv');
-      console.log(req.query.collection);
-      console.log(req.query.entryID);
-      res.send(results);
+        var cursor = db.collection(req.query.collection).findOne({"_id":req.query.entryID}, function(err,results){
+        console.log('---vvv');
+        console.log(req.query.collection);
+        console.log(req.query.entryID);
+        res.send(results);
     });
 });
