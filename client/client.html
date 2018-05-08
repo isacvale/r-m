@@ -79,36 +79,33 @@
 
 
     <template id="edit-company">
-        <!--<form action="http://localhost:3000/company" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-company" method='POST'>
-            <input type='hidden' name="noun" id = 'noun' placeholder="nome" value="company">
-            <input type='hidden' name="entryID" id = 'entryID' placeholder="nome">
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
-            <input type="text" name="name" id = 'name' placeholder="nome">
-            <input type='submit' value='adicionar'>
+            <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
+            <input type='hidden' name="entryID" id='entryID' placeholder="nome">
+            <input type='hidden' value="..." name="webpage">
+            <input type="text" name="name" id='name' placeholder="nome">
+            <input type='submit' value='confirmar'>
         </form>
     </template>
     <template id="edit-broker">
-        <!--<form action="http://localhost:3000/broker" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-broker" method='POST'>
-          <input type='hidden' name="noun" id = 'noun' placeholder="nome" value="company">
-          <input type='hidden' name="entryID" id = 'entryID' placeholder="nome">
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
-            <input type="text" name="name" id = 'name' placeholder="nome">
-            <input type="text" name="company" id = 'company' placeholder="imobiliária">
-            <input type='submit' value='adicionar'>
+          <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
+          <input type='hidden' name="entryID" id='entryID' placeholder="nome">
+            <input type='hidden' value="..." name="webpage">
+            <input type="text" name="name" id='name' placeholder="nome">
+            <input type="text" name="company" id='company' placeholder="imobiliária">
+            <input type='submit' value='confirmar'>
         </form>
     </template>
     <template id="edit-place">
-        <!--<form action="http://localhost:3000/place" method='PUT'>-->
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-place" method='POST'>
-          <input type='hidden' name="noun" id = 'noun' placeholder="nome" value="company">
-          <input type='hidden' name="entryID" id = 'entryID' placeholder="nome">
-            <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
-            <input type="text" name="address" id = 'address' placeholder="endereço">
-            <input type="text" name="broker" id = 'broker' placeholder="corretor">
-            <input type="text" name="rent" id = 'rent' placeholder="aluguel">
-            <input type='submit' value='adicionar'>
+          <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
+          <input type='hidden' name="entryID" id='entryID' placeholder="nome">
+            <input type='hidden' value="..." name="webpage">
+            <input type="text" name="address" id='address' placeholder="endereço">
+            <input type="text" name="broker" id='broker' placeholder="corretor">
+            <input type="text" name="rent" id='rent' placeholder="aluguel">
+            <input type='submit' value='confirmar'>
         </form>
     </template>
 
