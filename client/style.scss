@@ -192,7 +192,18 @@ input[type=submit]{
     }
 }
 
+label{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: darken($color7,20%);
+  margin: 8px 0;
+  padding: 4px;
+}
 
 input[name=entryID]{
+  display:none !important;
+}
+input[name=noun]{
   display:none !important;
 }
