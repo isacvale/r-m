@@ -11,26 +11,6 @@ var companyID:string;
 var brokerID:string;
 var placeID:string;
 
-//const webAdress = localAddress;
-
-/*if(webAdress == serverAddress){
-    //Let's fix the form's action if running locally
-    let templatesArr = ["write-company","write-broker","write-place"];
-    let tAction:string;
-
-    templatesArr.forEach(function(tID){
-        if(tID == "write-company") tAction = "/company";
-        else if(tID == "write-broker") tAction = "/broker";
-        else if(tID == "write-place") tAction = "/place";
-
-        let template = document.getElementById(tID);
-        console.log(template+'/'+tID);
-        console.log(template.content)
-        let content = template.content;
-        content.querySelector("form").action="/company";
-    });
-}*/
-
 //Relic: to be recycled
 function loadData() {
             var xhttp = new XMLHttpRequest();
@@ -141,10 +121,12 @@ function displayData(dataType, json){
             nameField.innerHTML = entry['name'];
         }
         else if(dataType=="broker"){
-            //Get the paragraph "name" within the template element
-            let nameField = template.content.querySelector("p.name");
-            //Set it to use the name in the database
-            nameField.innerHTML = entry['p.name'];
+            // //Get the paragraph "name" within the template element
+            // let nameField = template.content.querySelector("p.name");
+            // //Set it to use the name in the database
+            // nameField.innerHTML = entry['p.name'];
+
+            template.content.querySelector("p.name").innerHTML = entry['name'];
             template.content.querySelector("p.company").innerHTML = entry['company'];
         }
         else if(dataType=="place"){
@@ -163,6 +145,8 @@ function displayData(dataType, json){
 
 //Similar to displayData but meant for editar
 function autoComplete(dataType,json){
+alert(json);
+console.log(json);
   //Get the template element
   let template = document.getElementById('edit-'+dataType);
   //Get the stub where to place the entry
@@ -170,27 +154,27 @@ function autoComplete(dataType,json){
 
   if(dataType=="company"){
       //Get the paragraph "name" within the template element
-      let nameField = template.content.querySelector("input[name=name]");
+      let nameField = contentStub.querySelector("input[name=name]");
       //Set it to use the name in the database
-      nameField.innerHTML = json['name'];
+      nameField.value = json['name'];
   }
   else if(dataType=="company"){
       //Get the paragraph "name" within the template element
-      let nameField = template.content.querySelector("input[name=name]");
-      let companyField = template.content.querySelector("input[name=company]");
+      let nameField = contentStub.querySelector("input[name=name]");
+      let companyField = contentStub.querySelector("input[name=company]");
       //Set it to use the name in the database
-      nameField.innerHTML = json['name'];
-      companyField.innerHTML = json['company'];
+      nameField.value = json['name'];
+      companyField.value = json['company'];
   }
   else if(dataType=="place"){
       //Get the paragraph "name" within the template element
-      let addressField = template.content.querySelector("input[name=address]");
-      let brokerField = template.content.querySelector("input[name=broker]");
-      let rentField = template.content.querySelector("input[name=rent]");
+      let addressField = contentStub.querySelector("input[name=address]");
+      let brokerField = contentStub.querySelector("input[name=broker]");
+      let rentField = contentStub.querySelector("input[name=rent]");
       //Set it to use the name in the database
-      addressField.innerHTML = json['address'];
-      brokerField.innerHTML = json['broker'];
-      rentField.innerHTML = json['rent'];
+      addressField.value = json['address'];
+      brokerField.value = json['broker'];
+      rentField.value = json['rent'];
   }
 }
 
