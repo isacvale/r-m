@@ -8,7 +8,6 @@ var port = process.env.PORT || 3000;
 //const port: any = 3000;
 var serverAddress = "https://blooming-hamlet-30182.herokuapp.com/";
 var db;
-console.log("the code started running");
 mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', function (err, client) {
     if (err)
         return console.log(err);
@@ -27,37 +26,54 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', true);
     next();
-    console.log("the code milestone 2");
 });
 //app.use(cors());
-console.log("the code milestone 3");
 //MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: true }));
 //HANDLING EVENTS
 app.get('/', function (req, res, next) {
     var cursor = db.collection("company").find().toArray(function (err, results) {
-        console.log(results);
-        console.log("the code milestone 4");
-        //res.redirect('http://isacvale.com');
         res.send("It works!");
     });
 });
+//>>>>GETS read from db
 app.get('/company', function (req, res, next) {
     var cursor = db.collection("company").find().toArray(function (err, results) {
-        //console.log(results);
-        console.log("the code milestone 5");
         res.send(results);
     });
 });
+app.get('/broker', function (req, res, next) {
+    var cursor = db.collection("broker").find().toArray(function (err, results) {
+        res.send(results);
+    });
+});
+app.get('/place', function (req, res, next) {
+    var cursor = db.collection("place").find().toArray(function (err, results) {
+        res.send(results);
+    });
+});
+//>>>>POSTS write to db
 app.post('/company', function (req, res) {
     db.collection('company').save(req.body, function (err, result) {
         if (err)
             return console.log(err);
-        console.log('saved to database');
         var goto = req.body['webpage'] + '/error';
-        console.log('redirect: ' + goto);
-        //res.redirect('http://google.com');
     });
     console.log(req.body);
 });
-console.log("the code milestone 6");
+app.post('/broker', function (req, res) {
+    db.collection('broker').save(req.body, function (err, result) {
+        if (err)
+            return console.log(err);
+        var goto = req.body['webpage'] + '/error';
+    });
+    console.log(req.body);
+});
+app.post('/place', function (req, res) {
+    db.collection('place').save(req.body, function (err, result) {
+        if (err)
+            return console.log(err);
+        var goto = req.body['webpage'] + '/error';
+    });
+    console.log(req.body);
+});

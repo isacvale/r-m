@@ -129,4 +129,33 @@ input[type=submit] {
   background-color: #fff !important;
 }
 
+/*%base-font{
+    font-size: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}*/
+.inner_selector {
+  margin: 8px 0;
+  padding: 4px;
+  border-top: 1px solid #deb681;
+}
+.inner_selector p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #6a919b;
+}
+.inner_selector button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  background-color: #deb681;
+  border: none;
+  margin: 8px auto 0;
+  padding: 12px;
+  width: 100%;
+}
+
 /*# sourceMappingURL=client/style.css.map */

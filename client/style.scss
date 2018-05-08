@@ -141,3 +141,37 @@ input[type=submit]{
 .bleached{
     background-color: $color0 !important;
 }
+
+//CANVAS ELEMENTS
+/*%base-font{
+    font-size: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}*/
+#canvas{
+    //border:1px dotted orange;
+}
+.inner_selector{
+    margin: 8px 0;
+    padding: 4px;
+    border-top: 1px solid $color2;
+    
+    p{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        color: darken($color7,20%);
+    }
+    button{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        color: $color0;
+        background-color: $color2;
+        border: none;
+        margin: 8px auto 0;
+        padding: 12px;
+        width: 100%;
+    }
+}

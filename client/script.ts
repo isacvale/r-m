@@ -4,8 +4,25 @@ var currentVerb:string = 'read'; //read, write, edit or erase
 var currentNoun:string = 'company'; //company, broker, place
 const viewStub = document.getElementById('stub-create');
 const serverAddress:string = "https://blooming-hamlet-30182.herokuapp.com/";
-const localAddress:string = "http://localhost:3000";
-const webAdress = serverAddress;
+const localAddress:string = "http://localhost:3000/";
+//const webAdress = serverAddress;
+const webAdress = localAddress;
+
+if(webAdress == serverAddress){
+    //Let's fix the form's action if running locally
+    let templatesArr = ["write-company","write-broker","write-place"];
+    let tAction:string;
+    
+    templatesArr.forEach(function(tID){
+        if(tID == "write-company") tAction = "/company";
+        else if(tID == "write-broker") tAction = "/broker";
+        else if(tID == "write-place") tAction = "/place";
+        
+        let template = document.getElementById(tID);
+        let content = template.content;
+        content.querySelector("form").action="/company";
+    });
+}
 
 //Relic: to be recycled
 function loadData() {
@@ -34,21 +51,15 @@ window.onload = function(){
     
     //Finally we retrieve and display the data
     let dataDB = retrieveData('company');
-    alert(dataDB);
+    //alert(dataDB);
     
     //loadTemplate();
 }
-//Load content template to canvas
-function loadTemplate(){
-    let viewStub = document.getElementById('stub-create');
-    
-    let templateId: string = currentVerb+'-'+currentNoun;
-    let viewTemplate = document.getElementById(templateId);
-    viewStub.innerHTML = viewTemplate.innerHTML;
-}
+
 //On-click of main buttons
 function selectBtn(btn_id){
     if(btn_id!=currentVerb && btn_id!=currentVerb){
+        clearView();
         switch( btn_id ){
             case "sq-company":
                 currentNoun = 'company';
@@ -80,26 +91,63 @@ function selectBtn(btn_id){
                 fixBleach('verb',"sq-apagar");
                 break;
         }
-        loadTemplate();
+        if(currentVerb!="read") loadTemplate();
+        
+        if(currentVerb=="read"){
+            retrieveData(currentNoun);
+            /*let dataJson = retrieveData(currentNoun);
+            alert('>>> :');
+            alert(dataJson);
+            displayData( currentNoun, dataJson );*/
+        }
     }
+}
+
+//Load content template to canvas
+function loadTemplate(){
+    let viewStub = document.getElementById('stub-create');
+    
+    let templateId: string = currentVerb+'-'+currentNoun;
+    let viewTemplate = document.getElementById(templateId);
+    viewStub.innerHTML = viewTemplate.innerHTML;
+    //alert(templateId);
 }
 
 //Load the template, reassign results and paste them on canvas
 function displayData(dataType, json){
-    /*json.forEach((entry)=>{
-        let template = document.querySelector('#read'+dataType);
-        for(var key in entry){
-            if(key!='_id'&&key!='webpage'){
-                template.content.querySelector("."+key).innerHTML = entry[key];
-            }
-        }
-        //clone===
-    });*/
-    /*for(var key in json){
-        let template = document.querySelector('#read'+dataType);
+    
+    json.forEach((entry)=>{
         
-        let clone = 
-    }*/
+        //Get the template element
+        let template = document.getElementById('read-'+dataType);
+        //Get the stub where to place the entry
+        let contentStub = document.getElementById('stub-create');
+        
+        if(dataType=="company"){
+            //Get the paragraph "name" within the template element
+            let nameField = template.content.querySelector("p");
+            //Set it to use the name in the database
+            nameField.innerHTML = entry['name']; 
+        }
+        else if(dataType=="broker"){
+            //Get the paragraph "name" within the template element
+            let nameField = template.content.querySelector("p.name");
+            //Set it to use the name in the database
+            nameField.innerHTML = entry['name']; 
+            template.content.querySelector("p.name").innerHTML = entry['company'];
+        }
+        else if(dataType=="place"){
+            template.content.querySelector("p.address").innerHTML = entry['address'];
+            template.content.querySelector("p.broker").innerHTML = entry['broker'];
+            template.content.querySelector("p.rent").innerHTML = entry['rent'];
+        }
+        
+        //Clone the entry with the db data
+        var clone = document.importNode(template.content,true);
+        //Append the clone to the stub
+        contentStub.appendChild(clone);
+        
+    });
 }
 
 //{"_id":"5aef5d08d92d9831a7b71233","webpage":"file:///home/isac/Documents/HD/Work/Alclone===lmatech/Kobayashi%20Maru/client/client.html","name":"Apollo Inc"}
@@ -109,13 +157,15 @@ function displayData(dataType, json){
 //GET data from db with ajax
 function retrieveData(strType:string){
     var xhttp = new XMLHttpRequest();
-    xhttp.open('GET', webAdress+"/"+strType, true);
+    xhttp.open('GET', webAdress+strType, true);
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function(){
-        alert('response: '+this.response);
-            return JSON.parse(this.responseText);
-            }
-            xhttp.send();
+        //alert('response: '+this.response);
+        //let response = JSON.parse(this.responseText);
+        //return response;
+        displayData(strType,JSON.parse(this.responseText));
+        }
+        xhttp.send();
 }
 
 //AESTHETICS
