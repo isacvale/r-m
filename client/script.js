@@ -122,8 +122,8 @@ function displayData(dataType, json) {
             //Get the paragraph "name" within the template element
             var nameField = template.content.querySelector("p.name");
             //Set it to use the name in the database
-            nameField.innerHTML = entry['name'];
-            template.content.querySelector("p.name").innerHTML = entry['company'];
+            nameField.innerHTML = entry['p.name'];
+            template.content.querySelector("p.company").innerHTML = entry['company'];
         }
         else if (dataType == "place") {
             template.content.querySelector("p.address").innerHTML = entry['address'];
@@ -135,6 +135,37 @@ function displayData(dataType, json) {
         //Append the clone to the stub
         contentStub.appendChild(clone);
     });
+}
+//Similar to displayData but meant for editar
+function autoComplete(dataType, json) {
+    //Get the template element
+    var template = document.getElementById('edit-' + dataType);
+    //Get the stub where to place the entry
+    var contentStub = document.getElementById('stub-create');
+    if (dataType == "company") {
+        //Get the paragraph "name" within the template element
+        var nameField = template.content.querySelector("input[name=name]");
+        //Set it to use the name in the database
+        nameField.innerHTML = json['name'];
+    }
+    else if (dataType == "company") {
+        //Get the paragraph "name" within the template element
+        var nameField = template.content.querySelector("input[name=name]");
+        var companyField = template.content.querySelector("input[name=company]");
+        //Set it to use the name in the database
+        nameField.innerHTML = json['name'];
+        companyField.innerHTML = json['company'];
+    }
+    else if (dataType == "place") {
+        //Get the paragraph "name" within the template element
+        var addressField = template.content.querySelector("input[name=address]");
+        var brokerField = template.content.querySelector("input[name=broker]");
+        var rentField = template.content.querySelector("input[name=rent]");
+        //Set it to use the name in the database
+        addressField.innerHTML = json['address'];
+        brokerField.innerHTML = json['broker'];
+        rentField.innerHTML = json['rent'];
+    }
 }
 //On click select instance
 function selectItem(selectedNode) {
@@ -242,7 +273,9 @@ function fetchEntry(collection, entryID) {
     xhttp.open('GET', webAdress + 'fetch' + parameters, true);
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function () {
-        console.log(this.responseText);
+        //console.log(this.responseText);
+        if (currentVerb == 'edit')
+            autoComplete(currentNoun, JSON.parse(this.responseText));
     };
     xhttp.send();
 }
