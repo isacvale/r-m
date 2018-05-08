@@ -124,28 +124,30 @@ app.get('/fetch', (req, res, next) => {
       let entryNoun = req.body.noun;
       db.collection('company').update( {_id:ObjectId(entryID)}, {
           name:req.body.name
+        }, function(err,results){
+            if (err) return console.log(err);
+            res.redirect("http://rm.isacvale.com");
+        });
+      });
+  app.post('/edit-broker', (req, res) => {
+      let entryID = req.body.entryID;
+      let entryNoun = req.body.noun;
+      db.collection('broker').update( {_id:ObjectId(entryID)}, {
+        name:req.body.name,
+        company:req.body.company
         });
         res.redirect("http://rm.isacvale.com");
       });
-  // app.post('/edit-broker', (req, res) => {
-  //     let entryID = req.body.entryID;
-  //     let entryNoun = req.body.noun;
-  //     db.collection('broker').update( {_id:ObjectId(entryID)}, {
-  //       name:req.body.name,
-  //       company:req.body.company
-  //       });
-  //       res.redirect("http://rm.isacvale.com");
-  //     });
-  // app.post('/edit-place', (req, res) => {
-  //     let entryID = req.body.entryID;
-  //     let entryNoun = req.body.noun;
-  //     db.collection('place').update( {_id:ObjectId(entryID)}, {
-  //       address:req.body.address,
-  //       broker:req.body.broker,
-  //       rent:req.body.rent
-  //       });
-  //       res.redirect("http://rm.isacvale.com");
-  //     });
+  app.post('/edit-place', (req, res) => {
+      let entryID = req.body.entryID;
+      let entryNoun = req.body.noun;
+      db.collection('place').update( {_id:ObjectId(entryID)}, {
+        address:req.body.address,
+        broker:req.body.broker,
+        rent:req.body.rent
+        });
+        res.redirect("http://rm.isacvale.com");
+      });
 
       // .save(req.body, (err,result) => {{"$oid": "5aef5d08d92d9831a7b71233" }
       //     if (err) return console.log(err);
