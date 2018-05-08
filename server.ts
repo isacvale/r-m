@@ -103,7 +103,7 @@ app.post('/delete-company', (req, res, next) => {
   //     res.redirect("http://rm.isacvale.com");
   // });
 
-  db.collection('company').remove( {"_id": ObjectId(req.query.entryID)}, (err,results)=>{
+  db.collection('company').remove( {"_id": ObjectId(req.body.entryID)}, (err,results)=>{
     console.log("------------------------------------> runs: "+req.query.entryID);
     res.send(req.query.entryID);
     //if(err){res.send(err);}

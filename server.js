@@ -93,7 +93,7 @@ app.post('/delete-company', function (req, res, next) {
     // //res.send(req.query.entryID);
     //     res.redirect("http://rm.isacvale.com");
     // });
-    db.collection('company').remove({ "_id": ObjectId(req.query.entryID) }, function (err, results) {
+    db.collection('company').remove({ "_id": ObjectId(req.body.entryID) }, function (err, results) {
         console.log("------------------------------------> runs: " + req.query.entryID);
         res.send(req.query.entryID);
         //if(err){res.send(err);}
