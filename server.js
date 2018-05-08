@@ -88,16 +88,18 @@ app.get('/fetch', function (req, res, next) {
 });
 //>>>>POST to delete
 app.post('/delete-company', function (req, res, next) {
-    // //db.collection('company').findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
-    // db.collection('company').remove({_id:req.query.entryID }, function(err,results){
-    // //res.send(req.query.entryID);
-    //     res.redirect("http://rm.isacvale.com");
-    // });
     db.collection('company').remove({ "_id": ObjectId(req.body.entryID) }, function (err, results) {
-        console.log("------------------------------------> runs: " + req.query.entryID);
-        res.send(req.query.entryID);
-        //if(err){res.send(err);}
-        //else{  res.redirect("http://rm.isacvale.com");   }
+        res.redirect("http://rm.isacvale.com");
+    });
+});
+app.post('/delete-broker', function (req, res, next) {
+    db.collection('broker').remove({ "_id": ObjectId(req.body.entryID) }, function (err, results) {
+        res.redirect("http://rm.isacvale.com");
+    });
+});
+app.post('/delete-place', function (req, res, next) {
+    db.collection('place').remove({ "_id": ObjectId(req.body.entryID) }, function (err, results) {
+        res.redirect("http://rm.isacvale.com");
     });
 });
 //>>>>POSTS to rewrite db
@@ -127,7 +129,7 @@ app.post('/delete-company', function (req, res, next) {
 app.post('/edit-company', function (req, res) {
     var entryID = req.body.entryID;
     //db.collection('company').update( {_id:ObjectId(entryID)}, {
-    db.collection('company').update({ _id: entryID }, {
+    db.collection('company').update({ "_id": ObjectId(req.body.entryID) }, {
         name: req.body.name
     }, function (err, results) {
         if (err)
@@ -138,7 +140,7 @@ app.post('/edit-company', function (req, res) {
 app.post('/edit-broker', function (req, res) {
     var entryID = req.body.entryID;
     //db.collection('broker').update( {_id:ObjectId(entryID)}, {
-    db.collection('broker').update({ _id: entryID }, {
+    db.collection('broker').update({ "_id": ObjectId(req.body.entryID) }, {
         //db.collection('broker').update( {name:req.body.name}, {
         name: req.body.name,
         company: req.body.company
@@ -148,7 +150,7 @@ app.post('/edit-broker', function (req, res) {
 app.post('/edit-place', function (req, res) {
     var entryID = req.body.entryID;
     //db.collection('place').update( {_id:ObjectId(entryID)}, {
-    db.collection('place').update({ _id: entryID }, {
+    db.collection('place').update({ "_id": ObjectId(req.body.entryID) }, {
         address: req.body.address,
         broker: req.body.broker,
         rent: req.body.rent
