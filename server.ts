@@ -119,7 +119,13 @@ app.post('/edit', (req, res) => {
     res.redirect("http://rm.isacvale.com");
   });
 
-
+  app.post('/edit-company', (req, res) => {
+      let entryID = req.body.entryID;
+      let entryNoun = req.body.noun;
+      db.collection('company').update( {_id:ObjectId(entryID)}, {
+          name:req.body.name
+        });
+      });
 
       // .save(req.body, (err,result) => {{"$oid": "5aef5d08d92d9831a7b71233" }
       //     if (err) return console.log(err);
