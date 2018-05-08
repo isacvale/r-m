@@ -76,7 +76,7 @@ function selectBtn(btn_id) {
         if (currentVerb == 'edit') {
             checkFetchEntry();
         }
-        if (currentVerb == 'delete') {
+        if (currentVerb == 'erase') {
             checkFetchEntry();
         }
     }
