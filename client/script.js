@@ -134,7 +134,7 @@ function autoComplete(dataType, json) {
         var nameField = contentStub.querySelector("input[name=name]");
         //Set it to use the name in the database
         nameField.value = json['name'];
-        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.querySelector("input[name=entryID]").value = json['_id'];
     }
     else if (dataType == "broker") {
         //Get the paragraph "name" within the template element
@@ -143,7 +143,7 @@ function autoComplete(dataType, json) {
         //Set it to use the name in the database
         nameField.value = json['name'];
         companyField.value = json['company'];
-        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.querySelector("input[name=entryID]").value = json['_id'];
     }
     else if (dataType == "place") {
         //Get the paragraph "name" within the template element
@@ -154,7 +154,7 @@ function autoComplete(dataType, json) {
         addressField.value = json['address'];
         brokerField.value = json['broker'];
         rentField.value = json['rent'];
-        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.querySelector("input[name=entryID]").value = json['_id'];
     }
 }
 //Similar to displayData but meant for editar
