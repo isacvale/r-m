@@ -118,22 +118,3 @@ app.post('/edit-company', function (req, res) {
     });
     res.redirect("http://rm.isacvale.com");
 });
-app.post('/edit-broker', function (req, res) {
-    var entryID = req.body.entryID;
-    var entryNoun = req.body.noun;
-    db.collection('broker').update({ _id: ObjectId(entryID) }, {
-        name: req.body.name,
-        company: req.body.company
-    });
-    res.redirect("http://rm.isacvale.com");
-});
-app.post('/edit-place', function (req, res) {
-    var entryID = req.body.entryID;
-    var entryNoun = req.body.noun;
-    db.collection('place').update({ _id: ObjectId(entryID) }, {
-        address: req.body.address,
-        broker: req.body.broker,
-        rent: req.body.rent
-    });
-    res.redirect("http://rm.isacvale.com");
-});
