@@ -74,10 +74,10 @@ function selectBtn(btn_id) {
             retrieveData(currentNoun);
         }
         if (currentVerb == 'edit') {
+            console.log(111);
             checkFetchEntry();
         }
         if (currentVerb == 'erase') {
-            console.log(111);
             checkFetchEntry();
         }
     }
@@ -126,7 +126,7 @@ function displayData(dataType, json) {
 //Similar to displayData but meant for editar
 function autoComplete(dataType, json) {
     //Get the template element
-    var template = document.getElementById('edit-' + dataType);
+    //let template = document.getElementById('edit-'+dataType);
     //Get the stub where to place the entry
     var contentStub = document.getElementById('stub-create');
     if (dataType == "company") {
@@ -134,7 +134,7 @@ function autoComplete(dataType, json) {
         var nameField = contentStub.querySelector("input[name=name]");
         //Set it to use the name in the database
         nameField.value = json['name'];
-        template.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
     }
     else if (dataType == "broker") {
         //Get the paragraph "name" within the template element
@@ -143,7 +143,7 @@ function autoComplete(dataType, json) {
         //Set it to use the name in the database
         nameField.value = json['name'];
         companyField.value = json['company'];
-        template.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
     }
     else if (dataType == "place") {
         //Get the paragraph "name" within the template element
@@ -154,7 +154,7 @@ function autoComplete(dataType, json) {
         addressField.value = json['address'];
         brokerField.value = json['broker'];
         rentField.value = json['rent'];
-        template.content.querySelector("input[name=entryID]").value = json['_id'];
+        contentStub.content.querySelector("input[name=entryID]").value = json['_id'];
     }
 }
 //Similar to displayData but meant for editar
