@@ -6,6 +6,11 @@ const viewStub = document.getElementById('stub-create');
 const serverAddress:string = "https://blooming-hamlet-30182.herokuapp.com/";
 const localAddress:string = "http://localhost:3000/";
 const webAdress = serverAddress;
+
+var companyID:string;
+var brokerID:string;
+var placeID:string;
+
 //const webAdress = localAddress;
 
 /*if(webAdress == serverAddress){
@@ -125,9 +130,11 @@ function displayData(dataType, json){
         //Get the stub where to place the entry
         let contentStub = document.getElementById('stub-create');
         
+        template.content.querySelector("p._id").innerHTML = entry['_id'];
+        
         if(dataType=="company"){
             //Get the paragraph "name" within the template element
-            let nameField = template.content.querySelector("p");
+            let nameField = template.content.querySelector("p.name");
             //Set it to use the name in the database
             nameField.innerHTML = entry['name']; 
         }
@@ -151,6 +158,35 @@ function displayData(dataType, json){
         
     });
 }
+
+//On click select instance
+function selectItem(selectedNode){
+    
+    //First we get the element's parent, then a list of siblings.
+    let parentNode = selectedNode.parentElement;
+    let siblingNodes = parentNode.children;
+    //Now we loop through the siblings and take alway the selected class.
+    let node;
+    for(var i=0;i<siblingNodes.length;i++){
+        node = siblingNodes[i];
+        node.classList.remove("selected");
+    }
+    selectedNode.classList.add("selected");
+    
+    
+    if(selectedNode.querySelector("p._type").innerHTML == 'company'){
+        companyID = selectedNode.querySelector("p._id").innerHTML;
+    }
+    else if(selectedNode.querySelector("p._type").innerHTML == 'broker'){
+        brokerID = selectedNode.querySelector("p._id").innerHTML;
+    }
+    else if(selectedNode.querySelector("p._type").innerHTML == 'place'){
+        placeID = selectedNode.querySelector("p._id").innerHTML;
+    }
+    
+    console.log(companyID+'/'+brokerID+'/'+placeID);
+}
+
 
 //{"_id":"5aef5d08d92d9831a7b71233","webpage":"file:///home/isac/Documents/HD/Work/Alclone===lmatech/Kobayashi%20Maru/client/client.html","name":"Apollo Inc"}
 

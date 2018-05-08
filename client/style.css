@@ -129,12 +129,24 @@ input[type=submit] {
   background-color: #fff !important;
 }
 
+.selected {
+  background-color: #a7bec4 !important;
+  box-sizing: border-box;
+}
+.selected p {
+  color: white !important;
+}
+
 /*%base-font{
     font-size: 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 16px;
 }*/
+#canvas {
+  overflow-y: scroll;
+}
+
 .inner_selector {
   margin: 8px 0;
   padding: 4px;
@@ -145,6 +157,12 @@ input[type=submit] {
   font-weight: 600;
   font-size: 22px;
   color: #6a919b;
+}
+.inner_selector p._id {
+  font-size: 12;
+  font-weight: 300;
+  font-style: italic;
+  color: #e2d2d8;
 }
 .inner_selector button {
   font-family: "Montserrat", sans-serif;

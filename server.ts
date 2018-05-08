@@ -19,7 +19,6 @@ mongoClient.connect('mongodb://kobayashi:maru@ds012678.mlab.com:12678/dare-db', 
     });    
 });
 
-console.log("the code milestone 1");
 
 //Create and configure app
 const app = express();

@@ -57,18 +57,18 @@
             <input type='submit' value='adicionar'>
         </form>
     </template>
-    <template id="https://blooming-hamlet-30182.herokuapp.com/write-broker">
+    <template id="write-broker">
         <!--<form action="http://localhost:3000/broker" method='POST'>-->
-        <form action="/broker" method='POST'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/broker" method='POST'>
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="name" id = 'name' placeholder="nome">
             <input type="text" name="company" id = 'company' placeholder="imobiliária">
             <input type='submit' value='adicionar'>
         </form>
     </template>        
-    <template id="https://blooming-hamlet-30182.herokuapp.com/write-place">
+    <template id="write-place">
         <!--<form action="http://localhost:3000/place" method='POST'>-->
-        <form action="/place" method='POST'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='POST'>
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="address" id = 'address' placeholder="endereço">
             <input type="text" name="broker" id = 'broker' placeholder="corretor">
@@ -80,7 +80,7 @@
         
     <template id="edit-company">
         <!--<form action="http://localhost:3000/company" method='PUT'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/company" method='PUT'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/company-edit" method='POST'>
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="name" id = 'name' placeholder="nome">
             <input type='submit' value='adicionar'>
@@ -88,7 +88,7 @@
     </template>
     <template id="edit-broker">
         <!--<form action="http://localhost:3000/broker" method='PUT'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/broker" method='PUT'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/broker-edit" method='POST'>
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="name" id = 'name' placeholder="nome">
             <input type="text" name="company" id = 'company' placeholder="imobiliária">
@@ -97,7 +97,7 @@
     </template>
     <template id="edit-place">
         <!--<form action="http://localhost:3000/place" method='PUT'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/place" method='PUT'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/place-edit" method='POST'>
             <input type='hidden' value="file:///home/isac/Documents/HD/Work/Allmatech/Kobayashi%20Maru/client/client.html" name="webpage">
             <input type="text" name="address" id = 'address' placeholder="endereço">
             <input type="text" name="broker" id = 'broker' placeholder="corretor">
@@ -108,19 +108,29 @@
         
         
     <template id="read-company">
-        <div class="inner_selector">
+        <div class="inner_selector" onclick="selectItem(this)">
+            <p class="_type">company</p>
+            <p class="_id">id</p>
             <p class='name'>nome</p>
             <button type='button' class='btn-filter'>veja corretores</button>
         </div>
     </template>
     <template id="read-broker">
-        <p class='name'>nome</p>
-        <p class='company'>imobiliária</p>
+        <div class="inner_selector" onclick="selectItem(this)">
+            <p class="_type">broker</p>
+            <p class="_id">id</p>
+            <p class='name'>nome</p>
+            <p class='company'>imobiliária</p>
+        </div>
     </template>
     <template id="read-place">
-        <p class='address'>endereço</p>
-        <p class='broker'>corretor</p>
-        <p class='rent'>aluguel</p>
+        <div class="inner_selector" onclick="selectItem(this)">
+            <p class="_type">place</p>
+            <p class="_id">id</p>
+            <p class='address'>endereço</p>
+            <p class='broker'>corretor</p>
+            <p class='rent'>aluguel</p>
+        </div>
     </template>
         
         

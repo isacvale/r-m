@@ -141,6 +141,15 @@ input[type=submit]{
 .bleached{
     background-color: $color0 !important;
 }
+.selected{
+    background-color: $color7 !important;
+    
+    box-sizing: border-box;
+    //border: 3px solid $color6;
+    p{
+        color: white !important;
+    }
+}
 
 //CANVAS ELEMENTS
 /*%base-font{
@@ -151,6 +160,7 @@ input[type=submit]{
 }*/
 #canvas{
     //border:1px dotted orange;
+    overflow-y: scroll;
 }
 .inner_selector{
     margin: 8px 0;
@@ -162,6 +172,12 @@ input[type=submit]{
         font-weight: 600;
         font-size: 22px;
         color: darken($color7,20%);
+    }
+    p._id{
+        font-size: 12;
+        font-weight: 300;
+        font-style: italic;
+        color: $color5;
     }
     button{
         font-family: 'Montserrat', sans-serif;
