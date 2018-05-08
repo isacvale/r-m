@@ -176,4 +176,8 @@ input[type=submit] {
   width: 100%;
 }
 
+input[name=entryID] {
+  display: none !important;
+}
+
 /*# sourceMappingURL=client/style.css.map */
