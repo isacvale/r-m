@@ -81,7 +81,7 @@
     <template id="edit-company">
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-company" method='POST'>
             <input type='hidden' name="noun" id='noun' value="company">
-            <input type='hidden' name="entryID" id='entryID' placeholder="entryID">
+            <input type='hidden' name="entryID" id='entryID'>
             <input type="text" name="name" id='name' placeholder="nome">
             <input type='submit' value='confirmar'>
         </form>
@@ -97,8 +97,8 @@
     </template>
     <template id="edit-place">
         <form action="https://blooming-hamlet-30182.herokuapp.com/edit-place" method='POST'>
-          <input type='hidden' name="noun" id='noun' placeholder="nome" value="company">
-          <input type='hidden' name="entryID" id='entryID' placeholder="nome">
+          <input type='hidden' name="noun" id='noun' value="company">
+          <input type='hidden' name="entryID" id='entryID'>
             <input type="text" name="address" id='address' placeholder="endereço">
             <input type="text" name="broker" id='broker' placeholder="corretor">
             <input type="text" name="rent" id='rent' placeholder="aluguel">
