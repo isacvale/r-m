@@ -65,6 +65,7 @@ app.post('/company', (req, res) => {
     db.collection('company').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
+        console.log(">>>>>>>: "+"req.body['webpage']")
         res.redirect(req.body['webpage']);
     });
 });
