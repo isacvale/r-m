@@ -89,6 +89,9 @@ function selectBtn(btn_id){
         if(currentVerb=='edit'){
             checkFetchEntry();
         }
+        if(currentVerb=='delete'){
+            checkFetchEntry();
+        }
     }
 }
 
@@ -181,6 +184,8 @@ function autoComplete(dataType,json){
 
 //Similar to displayData but meant for editar
 function autoCompleteDelete(dataType,json){
+alert('!!!!');
+  alert(json);
   //Get the template element
   let template = document.getElementById('delete-'+dataType);
   //Get the stub where to place the entry
@@ -291,11 +296,13 @@ function fetchEntry(collection:string, entryID:string){
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function(){
         //console.log(this.responseText);
+        alert(this.response);
         if(currentVerb=='edit')  autoComplete(currentNoun,JSON.parse(this.responseText));
         if(currentVerb=='delete') autoCompleteDelete(currentNoun,JSON.parse(this.responseText));
         }
         xhttp.send();
 }
+
 //AESTHETICS
 
 //Remove spinner

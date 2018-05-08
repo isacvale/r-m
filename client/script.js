@@ -76,6 +76,9 @@ function selectBtn(btn_id) {
         if (currentVerb == 'edit') {
             checkFetchEntry();
         }
+        if (currentVerb == 'delete') {
+            checkFetchEntry();
+        }
     }
 }
 //Load content template to canvas
@@ -155,6 +158,8 @@ function autoComplete(dataType, json) {
 }
 //Similar to displayData but meant for editar
 function autoCompleteDelete(dataType, json) {
+    alert('!!!!');
+    alert(json);
     //Get the template element
     var template = document.getElementById('delete-' + dataType);
     //Get the stub where to place the entry
@@ -269,6 +274,7 @@ function fetchEntry(collection, entryID) {
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function () {
         //console.log(this.responseText);
+        alert(this.response);
         if (currentVerb == 'edit')
             autoComplete(currentNoun, JSON.parse(this.responseText));
         if (currentVerb == 'delete')
