@@ -88,11 +88,12 @@ app.get('/fetch', function (req, res, next) {
 });
 //>>>>POST to delete
 app.post('/delete-company', function (req, res, next) {
-    //db.collection('company').findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
-    db.collection('company').remove({ _id: req.query.entryID }, function (err, results) {
-        //res.send(req.query.entryID);
-        res.redirect("http://rm.isacvale.com");
-    });
+    // //db.collection('company').findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
+    // db.collection('company').remove({_id:req.query.entryID }, function(err,results){
+    // //res.send(req.query.entryID);
+    //     res.redirect("http://rm.isacvale.com");
+    // });
+    db.collection('company').remove({ "_id": ObjectId(req.query.entryID) });
 });
 //>>>>POSTS to rewrite db
 // app.post('/edit', (req, res) => {

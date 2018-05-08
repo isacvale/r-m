@@ -90,6 +90,7 @@ function selectBtn(btn_id){
             checkFetchEntry();
         }
         if(currentVerb=='erase'){
+          console.log(111);
             checkFetchEntry();
         }
     }
@@ -184,17 +185,20 @@ function autoComplete(dataType,json){
 
 //Similar to displayData but meant for editar
 function autoCompleteDelete(dataType,json){
-alert('!!!!');
-  alert(json);
-  //Get the template element
-  let template = document.getElementById('delete-'+dataType);
+console.log(444);
   //Get the stub where to place the entry
   let contentStub = document.getElementById('stub-create');
 
   let idField = contentStub.querySelector("input[name=entryID]");
   idField.value = json['_id'];
+  alert('from')
+  alert(json['_id']);
+  alert(idField.value);
+  alert('done')
 }
-
+// uId = ObjectId("59b59b34852a9619b486634f")
+// User.findOne({"_id": uId}, function(err, user){
+// });
 //On click select instance
 function selectItem(selectedNode){
 
@@ -272,6 +276,7 @@ function retrieveData(strType:string){
 
 //Check if fetchEntry is possible. If so, call it.
 function checkFetchEntry(){
+console.log(222);
     if(currentNoun=="company"){
         if(companyID==undefined){clearView();}
         else {fetchEntry("company", companyID);}
@@ -289,6 +294,8 @@ function checkFetchEntry(){
 //Query the db for a specific _id in a specific collection
 function fetchEntry(collection:string, entryID:string){
     let parameters:string = "?collection="+collection+"&entryID="+entryID;
+
+    console.log(333);
 
     console.log('>>>'+webAdress+'fetch'+parameters)
     var xhttp = new XMLHttpRequest();
