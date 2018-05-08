@@ -66,21 +66,21 @@ app.post('/company', (req, res) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
         console.log(">>>>>>>: "+req.body['webpage']);
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
 app.post('/broker', (req, res) => {
     db.collection('broker').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
 app.post('/place', (req, res) => {
     db.collection('place').save(req.body, (err,result) => {
         if (err) return console.log(err);
         let goto:string = req.body['webpage']+'/error';
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
 

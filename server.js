@@ -59,7 +59,7 @@ app.post('/company', function (req, res) {
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
         console.log(">>>>>>>: " + req.body['webpage']);
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
 app.post('/broker', function (req, res) {
@@ -67,7 +67,7 @@ app.post('/broker', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
 app.post('/place', function (req, res) {
@@ -75,6 +75,6 @@ app.post('/place', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        res.redirect(req.body['webpage']);
+        res.redirect("rm.isacvale.com");
     });
 });
