@@ -58,7 +58,7 @@ app.post('/company', function (req, res) {
         if (err)
             return console.log(err);
         var goto = req.body['webpage'] + '/error';
-        console.log(">>>>>>>: " + req.body['webpage']);
+        //console.log(">>>>>>>: "+req.body['webpage']);
         res.redirect("http://rm.isacvale.com");
     });
 });
@@ -82,7 +82,7 @@ app.post('/place', function (req, res) {
 app.get('/fetch', function (req, res, next) {
     //db.collection("company").findOne( {"$oid": "5aef5d08d92d9831a7b71233" }, function(err,results){
     db.collection(req.query.collection).findOne({ _id: ObjectId(req.query.entryID) }, function (err, results) {
-        console.log(results);
+        //console.log(results);
         res.send(results);
     });
 });
@@ -94,12 +94,9 @@ app.post('/delete-company', function (req, res, next) {
     //     res.redirect("http://rm.isacvale.com");
     // });
     db.collection('company').remove({ "_id": ObjectId(req.query.entryID) }, function (err, results) {
-        if (err) {
-            res.send(err);
-        }
-        else {
-            res.redirect("http://rm.isacvale.com");
-        }
+        res.send(req.query.entryID);
+        //if(err){res.send(err);}
+        //else{  res.redirect("http://rm.isacvale.com");   }
     });
 });
 //>>>>POSTS to rewrite db
