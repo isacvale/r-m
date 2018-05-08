@@ -91,6 +91,9 @@ function selectBtn(btn_id) {
         if (currentVerb == "read") {
             retrieveData(currentNoun);
         }
+        if (currentVerb == 'edit') {
+            checkFetchEntry();
+        }
     }
 }
 //Load content template to canvas
@@ -204,6 +207,33 @@ function retrieveData(strType) {
     };
     xhttp.send();
 }
+//Check if fetchEntry is possible. If so, call it.
+function checkFetchEntry() {
+    if (currentNoun == "company") {
+        if (companyID == undefined) {
+            clearView();
+        }
+        else {
+            fetchEntry("company", companyID);
+        }
+    }
+    else if (currentNoun == "broker") {
+        if (brokerID == undefined) {
+            clearView();
+        }
+        else {
+            fetchEntry("broker", companyID);
+        }
+    }
+    else if (currentNoun == "place") {
+        if (placeID == undefined) {
+            clearView();
+        }
+        else {
+            fetchEntry("place", companyID);
+        }
+    }
+}
 //Query the db for a specific _id in a specific collection
 function fetchEntry(collection, entryID) {
     var parameters = "/?collection=" + collection + "&entryID=" + entryID;
@@ -211,7 +241,7 @@ function fetchEntry(collection, entryID) {
     xhttp.open('GET', webAdress + 'fetch' + parameters, true);
     xhttp.setRequestHeader("Accept", "text/json");
     xhttp.onload = function () {
-        console.log('okay, it said so');
+        console.log(this.responseText);
     };
     xhttp.send();
 }
