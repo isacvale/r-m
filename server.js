@@ -81,21 +81,21 @@ app.post('/place', function (req, res) {
 app.get('/fetch', function (req, res, next) {
     var itemID = req.query.entryID;
     if (req.query.collection == "company") {
-        db.collection("company").findOne({ "_id": ObjectId(itemID) }, function (err, results) {
+        db.collection("company").findOne(ObjectId(itemID), function (err, results) {
             if (err)
                 return console.log("error: " + err);
             res.send(results);
         });
     }
     else if (req.query.collection == "broker") {
-        db.collection("broker").findOne({ "_id": ObjectId(itemID) }, function (err, results) {
+        db.collection("broker").findOne(ObjectId(itemID), function (err, results) {
             if (err)
                 return console.log("error: " + err);
             res.send(results);
         });
     }
     else if (req.query.collection == "place") {
-        db.collection("place").findOne({ "_id": ObjectId(itemID) }, function (err, results) {
+        db.collection("place").findOne(ObjectId(itemID), function (err, results) {
             if (err)
                 return console.log("error: " + err);
             res.send(results);
