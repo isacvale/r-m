@@ -85,14 +85,35 @@ app.post('/place', (req, res) => {
 
 //>>>>GETS to fetch a specific entry in the db
 app.get('/fetch', (req, res, next) => {
-        var cursor = db.collection(req.query.collection).findOne({_id:ObjectId(req.query.entryID)}, function(err,results){
-          if (err) {
-  return console.log("error: " + err);
-}
-        console.log('---vvv');
-        console.log(req.query.collection);
-        console.log(req.query.entryID);
-        console.log(results);
-        res.send(results);
-    });
-});
+    let itemID = req.query.entryID;
+    if(req.query.collection=="company"){
+        db.collection("company").findOne({_id:itemID}, function(err,results){
+            if (err) return console.log("error: " + err);
+            res.send(results);
+          });
+        }
+    else if(req.query.collection=="broker"){
+        db.collection("broker").findOne({_id:itemID}, function(err,results){
+            if (err) return console.log("error: " + err);
+            res.send(results);
+          });
+        }
+    else if(req.query.collection=="place"){
+        db.collection("place").findOne({_id:itemID}, function(err,results){
+            if (err) return console.log("error: " + err);
+            res.send(results);
+          });
+    }
+  });
+
+//         var cursor = db.collection(req.query.collection).findOne({_id:req.query.entryID}, function(err,results){
+//           if (err) {
+//   return console.log("error: " + err);
+// }
+//         console.log('---vvv');
+//         console.log(req.query.collection);
+//         console.log(req.query.entryID);
+//         console.log(results);
+//         res.send(results);
+//     });
+//});
