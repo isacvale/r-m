@@ -4,24 +4,25 @@ var currentNoun = 'company'; //company, broker, place
 var viewStub = document.getElementById('stub-create');
 var serverAddress = "https://blooming-hamlet-30182.herokuapp.com/";
 var localAddress = "http://localhost:3000/";
-//const webAdress = serverAddress;
-var webAdress = localAddress;
-if (webAdress == serverAddress) {
+var webAdress = serverAddress;
+//const webAdress = localAddress;
+/*if(webAdress == serverAddress){
     //Let's fix the form's action if running locally
-    var templatesArr = ["write-company", "write-broker", "write-place"];
-    var tAction_1;
-    templatesArr.forEach(function (tID) {
-        if (tID == "write-company")
-            tAction_1 = "/company";
-        else if (tID == "write-broker")
-            tAction_1 = "/broker";
-        else if (tID == "write-place")
-            tAction_1 = "/place";
-        var template = document.getElementById(tID);
-        var content = template.content;
-        content.querySelector("form").action = "/company";
+    let templatesArr = ["write-company","write-broker","write-place"];
+    let tAction:string;
+    
+    templatesArr.forEach(function(tID){
+        if(tID == "write-company") tAction = "/company";
+        else if(tID == "write-broker") tAction = "/broker";
+        else if(tID == "write-place") tAction = "/place";
+        
+        let template = document.getElementById(tID);
+        console.log(template+'/'+tID);
+        console.log(template.content)
+        let content = template.content;
+        content.querySelector("form").action="/company";
     });
-}
+}*/
 //Relic: to be recycled
 function loadData() {
     var xhttp = new XMLHttpRequest();

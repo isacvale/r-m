@@ -5,10 +5,10 @@ var currentNoun:string = 'company'; //company, broker, place
 const viewStub = document.getElementById('stub-create');
 const serverAddress:string = "https://blooming-hamlet-30182.herokuapp.com/";
 const localAddress:string = "http://localhost:3000/";
-//const webAdress = serverAddress;
-const webAdress = localAddress;
+const webAdress = serverAddress;
+//const webAdress = localAddress;
 
-if(webAdress == serverAddress){
+/*if(webAdress == serverAddress){
     //Let's fix the form's action if running locally
     let templatesArr = ["write-company","write-broker","write-place"];
     let tAction:string;
@@ -19,10 +19,12 @@ if(webAdress == serverAddress){
         else if(tID == "write-place") tAction = "/place";
         
         let template = document.getElementById(tID);
+        console.log(template+'/'+tID);
+        console.log(template.content)
         let content = template.content;
         content.querySelector("form").action="/company";
     });
-}
+}*/
 
 //Relic: to be recycled
 function loadData() {
