@@ -98,14 +98,12 @@ function selectBtn(btn_id){
                 fixBleach('verb',"sq-apagar");
                 break;
         }
-        if(currentVerb!="read") loadTemplate();
+        if(currentVerb!="read"){
+            loadTemplate();
+        }
         
         if(currentVerb=="read"){
             retrieveData(currentNoun);
-            /*let dataJson = retrieveData(currentNoun);
-            alert('>>> :');
-            alert(dataJson);
-            displayData( currentNoun, dataJson );*/
         }
     }
 }
@@ -190,6 +188,33 @@ function selectItem(selectedNode){
 
 //{"_id":"5aef5d08d92d9831a7b71233","webpage":"file:///home/isac/Documents/HD/Work/Alclone===lmatech/Kobayashi%20Maru/client/client.html","name":"Apollo Inc"}
 
+//When clicking a read main button, preselect the relevant data
+function preSelect(){
+    let viewStub = document.getElementById('stub-create');
+    let items = viewStub.children;
+    if(currentNoun=='company'){
+        if(companyID!=undefined) selectItem(getPreSelected(companyID));
+        if(companyID==undefined) selectItem(items[0]);
+    }
+    else if(currentNoun=='broker'){
+        if(brokerID!=undefined) selectItem(getPreSelected(brokerID));
+        if(brokerID==undefined) selectItem(items[0]);
+    }
+    else if(currentNoun=='place'){
+        if(placeID!=undefined) selectItem(getPreSelected(placeID));
+        if(placeID==undefined) selectItem(items[0]);
+    }
+}
+
+//Helper function 
+function getPreSelected(itemID){
+    let viewStub = document.getElementById('stub-create');
+    let items = viewStub.children;
+    for(var i=0;i<items.length;i++){
+        if(items[i].querySelector("._id").innerHTML==itemID) return items[i];
+    }
+}
+
 //NETWORK
 
 //GET data from db with ajax
@@ -202,10 +227,24 @@ function retrieveData(strType:string){
         //let response = JSON.parse(this.responseText);
         //return response;
         displayData(strType,JSON.parse(this.responseText));
+        preSelect();
         }
         xhttp.send();
 }
 
+//Query the db for a specific _id in a specific collection
+function fetchEntry(collection:string, entryID:string){
+    let parameters:string = "/?collection="+collection+"&entryID="+entryID;
+    
+    
+    var xhttp = new XMLHttpRequest();
+    xhttp.open('GET', webAdress+'fetch'+parameters, true);
+    xhttp.setRequestHeader("Accept", "text/json");
+    xhttp.onload = function(){
+        console.log('okay, it said so');
+        }
+        xhttp.send();
+}
 //AESTHETICS
 
 //Remove spinner

@@ -77,3 +77,9 @@ app.post('/place', function (req, res) {
         res.redirect("http://rm.isacvale.com");
     });
 });
+//>>>>GETS to fetch a specific entry in the db
+app.get('/fetch', function (req, res, next) {
+    var cursor = db.collection(req.query.collection).find({ _id: req.query.itemID }).toArray(function (err, results) {
+        res.send(results);
+    });
+});
