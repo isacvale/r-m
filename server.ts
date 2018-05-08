@@ -121,7 +121,8 @@ app.get('/fetch', (req, res, next) => {
 
   app.post('/edit-company', (req, res) => {
       let entryID = req.body.entryID;
-      db.collection('company').update( {_id:ObjectId(entryID)}, {
+      //db.collection('company').update( {_id:ObjectId(entryID)}, {
+      db.collection('company').update( {_id:entryID}, {
           name:req.body.name
         }, function(err,results){
             if (err) return console.log(err);
@@ -130,7 +131,8 @@ app.get('/fetch', (req, res, next) => {
       });
   app.post('/edit-broker', (req, res) => {
       let entryID = req.body.entryID;
-      db.collection('broker').update( {_id:ObjectId(entryID)}, {
+      //db.collection('broker').update( {_id:ObjectId(entryID)}, {
+      db.collection('broker').update( {_id:entryID}, {
         name:req.body.name,
         company:req.body.company
         });
@@ -138,7 +140,8 @@ app.get('/fetch', (req, res, next) => {
       });
   app.post('/edit-place', (req, res) => {
       let entryID = req.body.entryID;
-      db.collection('place').update( {_id:ObjectId(entryID)}, {
+      //db.collection('place').update( {_id:ObjectId(entryID)}, {
+      db.collection('place').update( {_id:entryID}, {
         address:req.body.address,
         broker:req.body.broker,
         rent:req.body.rent
