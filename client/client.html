@@ -147,7 +147,7 @@
     <template id="erase-broker">
       <div class="inner_selector" >
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-broker" method='DELETE'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-broker" method='POST'>
             <input type='hidden' value="." name="entryID">
             <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
             <input type='submit' id='btn-delete' value='deletar'>
@@ -157,7 +157,7 @@
     <template id="erase-place">
       <div class="inner_selector" >
         <!--<form action="http://localhost:3000/place" method='DELETE'>-->
-        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-place" method='DELETE'>
+        <form action="https://blooming-hamlet-30182.herokuapp.com/delete-place" method='POST'>
             <input type='hidden' value="." name="entryID">
             <label for='btn-delete'>Deseja mesmo apagar esse corretor?</label>
             <input type='submit' id='btn-delete' value='deletar'>

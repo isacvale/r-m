@@ -183,6 +183,7 @@ label {
   color: #6a919b;
   margin: 8px 0;
   padding: 4px;
+  border: none !important;
 }
 
 input[name=entryID] {
